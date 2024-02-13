@@ -1,0 +1,74 @@
+@keyframes red2yell{
+    0%   {color: rgba(255, 0, 0, 0.2); left:0px; top:0px;}
+    20%  {color: rgba(255, 223, 0, 0.8); left:200px; top:0px;}
+    40%  {color: rgba(0, 191, 255, 0.6); left:200px; top:200px;}
+    60%  {color: rgba(0, 255, 127, 0.2); left:0px; top:200px;}
+    80%  {color: rgba(255, 127, 80, 0.8); left:0px; top:0px;}
+    100% {color: rgba(255, 0, 0, 0.2); left:200px; top:200px;}
+}
+body{
+    margin: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    /* padding: 0 8px; */
+}
+header{
+    display: flex;
+    width: 100vw;
+    /* align-items: center; */
+    justify-content: center;
+    animation: red2yell 2s infinite;
+    height: 20vh;
+}
+section{
+    display: flex;
+    gap: 2rem;
+    height: 80vh;
+    width: 95vw;
+    align-items: center;
+    justify-content: center;
+}
+.twocol{
+    display: flex;
+}
+.formulas{
+    display: flex;
+    justify-content: space-around;
+}
+.enlaces{
+    display: flex;
+    justify-content: space-between;
+
+}
+.enlaces:hover{
+    animation: red2yell 2s infinite;
+}
+/* table{
+    display: flex;
+} */
+.tag-animated1:hover{
+    width: 100px;
+    height: 100px;
+    color: red;
+    animation-name: red2yell;
+    animation-duration: 2s;
+}
+@media (max-width: 600px) {
+    /* Estilos que se aplicarán cuando la pantalla sea más pequeña que 600px */
+    main{
+        height: auto;
+    }
+    section {
+       display: flex;
+       flex-direction: column;
+       height: auto;
+
+    }
+}
