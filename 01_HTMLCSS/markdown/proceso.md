@@ -2,20 +2,18 @@
 
 ## Commits
 
-### Tim-berners
+### Tim-berners p2
 
-- Usos basicos de html
+- Añadir imagen en navbar, resposiva
 
 ### Css Introducción p1
 
 - Introduccion a Css
 - Proyecto de mini pagina web, con varios archivos y un navegador(en proceso)
 
-### TryingMarkdown&Github EJEMPLO
+### Tim-berners
 
-- Estoy haciendo pruebas con Markdown, para dejar un README bonito y funcional.
-- He vuelto a colgar los contratos, *hasta el momento MintOnSepolia funciona bien*
-- Intentar integrar la funcion de pagar los tokens en LA RED PRINCIPAL para emprezar.
+- Usos basicos de html
 
 ## Tareas a Realizar EJEMPLO
 

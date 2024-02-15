@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores CSS</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+</head>
+<body>
+    <header>
+       
+        <h1>Selectores CSS</h1>
+    </header>
+    <main>
+        <section>
+            <h2>
+                Selectores especiales
+            </h2>
+            <p>
+                .primerDiv p
+            </p>
+            <p>Esto afectaria a todos los elementos "p" dentro de la clase .primerDiv</p>
+            <p>
+                .priverDiv > p 
+            </p>
+            <p>
+                Esto solo afectaria a los elementos "p" que son hijos directos de la clase .primerDiv
+            </p>
+            <h3>
+                Selectores de seudoclase
+            </h3>
+            <p>Afectan al realizarse ciertas acciones, hover, etc...</p>
+        </section>
+        <section>
+            
+            <h2>Prioridades en los selectores CSS</h2>
+            <ol>
+                <li>Selector de id( # )</li>
+                <li>Selector de clase( . )</li>
+                <li>Selector de etiqueta( div, p, ... )</li>
+            </ol>
+           
+           
+                <h3>Peso para las prioridades CSS</h3>
+            <p>El peso se usa para que selector tendra prioridad sobre otros selectores, dentro de la misma hoja de estilos</p>
+           <ul>
+            <li>Selector id  -> 100</li>
+            <li>Selector clase -> 10</li>
+            <li>Selector etiqueta -> 1</li>
+           </ul>
+           <p>Cuando hacemos selectores "especiales", con mas de un selector, estos se suman</p>
+           <blockquote>En <cite>VSC</cite>, en la hoja de estilos (CSS), si dejamos el mouse encima del selector, podemos ver los pesos</blockquote>
+           <p>Esto es un mensaje para mostrarara etiquetas html en un doc HTML, &lt;etiqueta&gt;&lt;/etiqueta&gt;</p>
+           
+        </section>
+      
+    
+    </main>
+</body>
+</html>
