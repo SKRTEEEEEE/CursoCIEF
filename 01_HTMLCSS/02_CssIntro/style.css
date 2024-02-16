@@ -19,20 +19,12 @@ blockquote:hover{
 }
 header{
     width: 100%;
-    /* height: 30vh;
-    position: relative;
-    overflow: hidden; */
 }
 img{
     width: 100%;
-    /* object-fit: contain; */
 }
 main{
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 8px;
-    height: 100vh; */
+   
     text-align: center;
     
 }
@@ -42,5 +34,22 @@ span {
 footer {
     background-color: gray;
     color: whitesmoke;
+}
+.padre {
+    max-width: 90%;
+    height: 600px;
+    border: 10px solid black;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hijo {
+    background: #ccc;
+    border: 5px solid red;
+    width: 100px;
+    height: 100px;
+
 }
 

@@ -12,7 +12,7 @@
     </header>
     <main>
       <section>
-        <div>
+        <article>
           <h2>Etiqueta de linea/etiqueta de bloque</h2>
 
           <p>
@@ -41,10 +41,44 @@
               
             </tbody>
           </table>
+          <!-- Etiqueta para desplegable -->
+          <details open>
+            <summary>Esto es un desplegable</summary>
+            <p>sin javascrip</p>
+            <details>
+              <summary>
+                Y este es otro desplegable</summary>
+                <p>dentro de</p>
+                <p>otro desplegable</p>
+              
+            </details>
+
+          </details>
+          <!-- Etiqueta para modal(pop-up) -->
+          <dialog id="modal">
+
+            <h2>Esto es un modal(pop-up)</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ex perspiciatis accusamus numquam similique voluptatem perferendis!</p>
+            <button id="cerrar">Cerrar ventana</button>
+          </dialog>
+          <button id="abrir">Abrir modal</button>
+          <script>
+            //window ->para acceder dom
+            //abrir ->id de la etiqueta de la cual vamos a hacer uso
+            //addEventListener("llamamos a la etiqueta", funcion que especifica que hace)
+            //showModal() -> muestra lo que haya dentro del "modal"
+            window.abrir.addEventListener("click", ()=>{
+              window.modal.showModal();
+            })
+            window.cerrar.addEventListener("click", ()=>{
+              window.modal.close();
+            })
+          </script>
+
           
           
-        </div>
-        <div>
+        </article>
+        <article>
           <h2>Estructura basica HTML</h2>
           <p>main></p>
           <p> section></p>
@@ -63,30 +97,32 @@
           
           
           
-        </div>
-        <figure>
-          <img
-            src="./img/pngwing.com.png"
-            id="pngwing1"
-            alt="imagen de fondo 1"
-            width="300"
-            title="Estamos en las nubes"
-          />
-          <figcaption>Esta imagen la e robao por san google</figcaption>
-        </figure>
-        <!-- 
-          al usar source le estamos dando una condincion al picture para renderizar la imagen
-          con el atributo media le damos un query
+        </article>
+        <article>
+          <h2>Etiquetas multimedia</h2>
+        <table>
+          <thead>
+            <tr>
+              
+              <th>Etiqueta de audio</th>
+              <th>Etiqueta de video</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              
+              <td><audio src="assets/aplaudiments.mp3" controls></audio></td>
+              <td class="video-box"><video src="assets/tiempo.mp4" width="300px" autoplay loop></video></td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+        <h3>Etiqueta iframe</h3>
+        <p>Etiqueta para traer el fragmento de codigo de otra pagina</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/7HjVkwZomCs?si=4T1BBd-Rm1tAx1Cm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-          https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
-        
-        <picture>
-          <source srcset="img/pngwing.com (1).png"
-          media="(min-width: 1200px)"
-          >
-            <img src="img/pngwing.com.png" alt="imagen de un fondo">
-        </picture>
-        -->
+      </article>
       </section>
     </main>
   </body>
