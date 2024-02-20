@@ -1,0 +1,28 @@
+Hay que hacer la página index.html según el modelo.
+Además, la cabecera y menú de navegación de "varietats.html", "botiga.html" y "nosaltres.html"
+
+Las fuentes tipográficas son "Dancing Script" y "Lato" de Google Fonts.
+El color verde del menú y el footer es #053617.
+
+El menú remitirá a páginas externas según este criterio:
+Inici -> index.html
+Varietats -> varietats.html
+Botiga -> botiga.html
+Sobre Nosaltres -> nosaltres.html
+
+La foto de la cabecera se llama como la página y debe estar en formato avif, en tamaños 2000px, 1440px, 800px y 500px, para que se cargue la adecuada dentro de una etiqueta <picture>. Atención que algunas están ahora en formato png.
+El video hay que reproducirlo de forma automática y contínua.
+
+
+Criterio de valoración:
+
+0.5 puntos : Etiquetas meta del head
+1 punto : Imágenes de la cabecera (<header>) con los tamaños correctos
+0.5 puntos : Aplicación correcta de la fuentes tipográficas
+0.5 puntos : Menú de navegación correctamente resuelto
+0.5 puntos : Inserción correcta del video
+1 punto : Aplicación correcta de las etiquetas semànticas
+2 puntos : Maquetación del <main>
+2 puntos : Maquetación del <footer> 
+1 punto : Código CSS bien escrito y organizado
+1 punto : Aportaciones personales en las páginas sin contenido

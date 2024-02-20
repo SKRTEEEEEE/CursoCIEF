@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+    --color-fondo: #053617;
+}
+
+* {
+
+margin: 0;
+padding: 0;
+font-family: lato;
+ }
+ .bg-col{
+    background-color: var(--color-fondo);
+    color: white;
+ }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+
+    
+  }
+  
+  header{
+    background-color: var(--color-fondo);
+}
+main {
+    display: flex;
+    
+  }
+  
+  footer {
+    flex-shrink: 0; 
+    background-color: var(--color-fondo);
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+  
+
+
+header nav {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    width: 70vw;
+    justify-content: space-between;
+    list-style: none;
+   
+    
+    
+}
+.nav-ul li a{
+    text-decoration: none;
+    color: white;
+}
+.nav-ul li:active:after{
+  text-decoration: overline;
+}
+
+.overline{
+  text-decoration: overline;
+  color: white;
+}
+img {
+max-width: 100%;
+}
+/* video {
+    max-width: 50%;
+} */
+
+header h1 {
+    position: absolute;
+    z-index: 2;
+    top: 5%;
+    right: 8%;
+    color: white;
+    font-family: "Dancing Script";
+    font-size: 6vw;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    /* width: 100vw; */
+
+    
+   
+}
+
+section{
+    width: 70vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.opinions{
+    display: flex;
+    flex-direction: column;
+    min-height: 40vh;
+
+    
+}
+.opinions h2{
+    height: 10vh;
+    align-items: center;
+}
+.opinions span{
+    display: flex;
+    width: 70vw;
+    padding: 2px;
+    justify-content: space-between;
+    font-size:  .7em;
+}
+.opinions span article{
+    display: flex;
+flex-direction: column;
+justify-content: space-between;
+max-width: 20vw;
+
+}
+.opinions span article cite{
+    color: red;
+    text-align: end;
+    
+}
+span article blockquote{
+    width: 15vw;
+    font-style: italic;
+
+}
+/* article{
+display: flex;
+flex-direction: column;
+text-align: center;
+justify-content: center;
+max-width: 20vw;
+} */
+/* blockquote{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+} */
+
+section img {
+    width: 35vw;
+}
+section video {
+    width: 35vw;
+}
+section article{
+    width: 35vw;
+
+    
+    
+}
+section article h2{
+    padding: 0 10px;
+    font-family:"Dancing Script" ;
+    font-size: 30px;
+}
+section article p{
+    padding: 0 10px;
+}
+
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+    font-size: 10px;
+    
+  }
+  
+  .footer-head img {
+    width: 30px;
+  }
+  .footer-section {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-logos img{
+    padding: 6px;
+  }
+
+  
+
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 5px;
+    
+  }
+  
+  .footer-section li {
+    margin: 5px 0;
+  } 
+  /* .opinions{
+    display: flex;
+    flex-direction:  column;
+    justify-content: center;
+    width: 100%;
+    
+  }
+  .opinions span{
+    display: flex;
+  } */
