@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varietats de Cafè</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .varietats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+      }
+      .varietat {
+        width: 300px;
+        height: 400px;
+        border: 3px solid yellowgreen;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 20px;
+        background-color: #cccc;
+      }
+      .varietat img {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="collapsed-page">
+        <picture>
+          <source media="(max-width:500px)" srcset="img/index_500px.avif" />
+          <source media="(max-width:800px)" srcset="img/index_800px.avif" />
+          <source media="(max-width:1400px)" srcset="img/index_1400px.avif" />
+
+          <img
+            src="img/index_2000px.avif"
+            alt="Header con imagen de ordenador"
+          />
+        </picture>
+
+        <h1>Cafés del Món</h1>
+      </div>
+      <nav>
+        <ul class="nav-ul width-content">
+          <li>
+            <a href="/CursoCIEF/01_HTMLCSS/03_BotigaDeCafes/index.html"
+              >Inici</a
+            >
+          </li>
+          <li class="overline">
+            <a href="/CursoCIEF/01_HTMLCSS/03_BotigaDeCafes/varietats.html"
+              >Varietats</a
+            >
+          </li>
+          <li>
+            <a href="/CursoCIEF/01_HTMLCSS/03_BotigaDeCafes/botiga.html"
+              >Botiga</a
+            >
+          </li>
+          <li>
+            <a href="/CursoCIEF/01_HTMLCSS/03_BotigaDeCafes/nosaltres.html"
+              >Sobre nosaltres</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="varietats">
+        <div class="varietat">
+          <img src="img/natural_600x750.avif" alt="Arábica" />
+          <h2>Arábica</h2>
+          <p>
+            La varietat Arábica és la més apreciada pels seus aromes i sabor. És
+            més suau i amb menys cafeïna que la varietat Robusta.
+          </p>
+        </div>
+        <div class="varietat">
+          <img src="img/natural_600x750.avif" alt="Robusta" />
+          <h2>Robusta</h2>
+          <p>
+            La varietat Robusta conté el doble de cafeïna que l'Arábica i té un
+            sabor més amarg. És més resistent a les plagues i a les condicions
+            climàtiques adverses.
+          </p>
+        </div>
+        <div class="varietat">
+          <img src="img/natural_600x750.avif" alt="Liberica" />
+          <h2>Liberica</h2>
+          <p>
+            La varietat Liberica és originària de les Filipines i té un sabor
+            únic, amb notes de fusta i flors. És menys popular que les altres
+            varietats, però és molt apreciada pels seus aromes.
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
