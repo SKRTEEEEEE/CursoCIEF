@@ -12,6 +12,9 @@ Este repositorio contiene los contenidos teoricos y practicos del curso, asi com
 
 ### Agradecimientos
 
+#### Docente: Ferran Parellada
+[Github](https://github.com/classesdeferran/)
+
 ### Licencia
 
 ### Información de Contacto

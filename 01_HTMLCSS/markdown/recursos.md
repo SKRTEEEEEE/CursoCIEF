@@ -1,32 +1,18 @@
+
 # Recursos
 
-## Aprender sobre las tecnologias usadas
-
-### Recursos de Aprendizaje Recomendados
-
-- Tutoriales sobre la integración de [Chainlink](https://www.youtube.com/@chainlink) en contratos inteligentes.
-- Playground para probar las [funciones de Chainlink](https://functions.chain.link/playground).
-
+## [Aprender sobre tecnologias Frontend](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/learn-techs/frontend.md)
 ## Tecnologías y Herramientas Utilizadas
 
-### Tecnologías y Lenguajes de Programación
+### [Tecnologías y Lenguajes de Programación](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/techs-lenguajes.md)
+### [Herramientas de desarollo](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/development-tools.md)
 
-- [Solidity](https://docs.soliditylang.org/en/v0.8.23/): Lenguaje utilizado para el desarrollo de contratos inteligentes.
-- [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript): Utilizado para la creación de interfaces de usuario y la interacción con los contratos desplegados.
 
-### Herramientas de desarollo
+### [Herramientas de edición](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/edition-tools.md)
 
-- [Remix IDE](https://remix.ethereum.org/): Entorno integrado de desarrollo utilizado para escribir, probar y desplegar contratos inteligentes.
-- [MetaMask](https://metamask.io/): Extensión de navegador utilizada para interactuar con aplicaciones descentralizadas (dApps) y cadenas de bloques.
 
-### Herramientas de edición
+## Tips
 
-- [Modificador de formatos de imagen](https://squoosh.app/editor): Modificador de formatos (.jpg, .avif, .png, ...) para mejorar rendimientos
-
-## Shortcuts
-
-- `li*5>a`   =>  `<li><a href=""></a></li>` * 5  (*crea lo del primer elemento x veces con el segundo elemento en el interior*)
-
-## Markdown
-
--       asi se hace una caja en markdown
+### [Shortcuts](https://github.com/SKRTEEEEEE/markdowns/blob/main/tips/shortcuts.md)
+### [Git](https://github.com/SKRTEEEEEE/markdowns/blob/main/tips/git.md)
+### [Markdown](https://github.com/SKRTEEEEEE/markdowns/blob/main/tips/markdown.md)

@@ -16,7 +16,9 @@ Catalogo de etiquetas de HTML y sus principales usos
 
 Introducción al uso de Css
 
-### 00 CrossDestinationMinter (EJEMPLO)
+### 03 Botiga de cafes
+
+Maquetación pagina hecha con HTML y CSS
 
 #### Propósito
 
