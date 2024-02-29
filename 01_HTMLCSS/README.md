@@ -1,9 +1,8 @@
 # 01 HTML y CSS
 
-## [Descripción del Proyecto](markdown/descripcion.md)
+## Descripción del Proyecto
 
-## [Proceso](markdown/proceso.md)
+Curso para aprender a usar HTML & CSS
 
-## [Recursos](markdown/recursos.md)
 
 
