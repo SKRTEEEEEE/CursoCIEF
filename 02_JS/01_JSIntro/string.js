@@ -1,7 +1,6 @@
-let texto_1 = "Hola Mundo"
-
 //  slice
 
+let texto_1 = "Hola Mundo"
 texto_1 = texto_1.slice(5)
 console.log(texto_1)
 
@@ -35,8 +34,7 @@ console.log(frase2.replaceAll("mucho", "poco"));
 // split -> convierte un string en array
 
 let nombre = "Peter Pan"
-//Asi para dividirlo en cada posicion
-// console.log(nombre.split(""))
+// console.log(nombre.split("")) -> Asi para dividirlo en cada posicion
 let nombreOrdenado = nombre.split(" ")[1] + ", " + nombre.split(" ")[0]
 console.log(nombreOrdenado)
 console.log(nombre.split(" "))
