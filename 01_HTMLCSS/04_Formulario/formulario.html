@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 
+    Podemos poder el label envolviendo el input y nos podriamos ahorrar el id del input
+    Podemos poner type=".." -> para definir el tipo y no permitir que el usuario introduzca otro
+        type="number", type="email", type="password", 
+    
+    
+    
+    -->
+    <main class="myForm">
+        <form action="#">
+            <fieldset>
+                <legend><h1>Etiquetas input</h1></legend>
+                <label for="nombre">Nombre: </label>
+                <input type="text" id="nombre" name="name" maxlength="5" minlength="2"></input>
+                <label>Apellido: <br><input type="text" id="apellido" name="name"/></label>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" minlength="6" maxlength="10">
+                <br><br>
+                <label for="input-grande">Textarea</label>
+                <textarea name="input-grande" id="" cols="30" rows="3"></textarea>
+                <br><br>
+            </fieldset>
+            <fieldset>
+                <legend>Otros</legend>
+                <label for="color">Elige un color</label>
+                <input type="color" name="color" id="color" onchange="cambioDeColor()">
+                <br>
+                <label for="color-1">Color 1</label>
+                <input type="color" name="color-1" id="color-1">
+                <label for="color-2">Color 2</label>
+                <input type="color" name="color-2" id="color-2">
+                <button type="button" onclick="degradado()">Cambiar fondo por degradado</button>
+
+                <br>
+                <div class="conic"></div>
+                <label for="color-3">Color 3</label>
+                <input type="color" name="color-3" id="color-3">
+                <label for="color-4">Color 4</label>
+                <input type="color" name="color-4" id="color-4">
+                <button type="button" onclick="degradadoConico()">Hazer un degradado conico</button>
+                <label for="fecha">Fecha</label>
+                <input type="date" name="fecha" id="fecha"  onchange="obtenerFecha()">
+                <p class="mayor"></p>
+                <br><br>
+                <label for="dt-local">Selecciona la fecha</label>
+                <input type="datetime-local" name="dt-local" id="dt-local">
+                <!--
+                    No soportada ni en Firefox, morzilla ni en el safari 😒
+                    <label for="datetime">Datetime</label>
+                    <input type="datetime" name="dt" id="dt"> 
+                -->
+                <label for="month">input month</label>
+                <input type="month" name="month" id="month">
+                
+            </fieldset>
+            <fieldset>
+                <!-- Selected para opcion por defecto -->
+                <legend><h2>Etiquetas de seleccion</h2></legend>
+                <h3>Radio</h3>
+                <label>
+                    <input type="radio" name="colorFavorito" value="rojo"> Rojo
+                </label>
+                <label>
+                    <input type="radio" name="colorFavorito" value="azul"> Azul
+                </label>
+                <label>
+                    <input type="radio" name="colorFavorito" value="verde"> Verde
+                </label>
+                <label for="cars"></label><h3>Select individual</h3></label>
+                <select name="cars" id="cars" onchange="obtenerInfoSelectSimple()">
+                    <option value="BMW">BMW</option>
+                    <hr>
+                    <option value="Jaguar" selected>Jaguar</option>
+                    <option value="Nissan">Nissan</option>
+                </select>
+                <label for="cars2"></label><h3>Select multiple</h3>
+                    <p><i>o que se pueden marcar varias opciones</i></p>
+                </label>
+                <select name="cars2" id="cars2" multiple>
+                    <option value="BMW">BMW</option>
+                    <hr>
+                    <option value="Jaguar" selected>Jaguar</option>
+                    <option value="Nissan">Nissan</option>
+                </select>
+                <button type="button" onclick="obtenerInfoSelectMulti()">Elige tus options</button>
+                <label for="datalist"><h3>Datalist</h3></label>
+                <input list="datalist" id="datalistID">
+                    <datalist id="datalist">
+                        <option value="JS">Javascript</option>
+                        <option value="Solidity">Solidity</option>
+                        <option value="Python">Python</option>
+                    </datalist>
+                </input>
+                
+
+            </fieldset>
+            <script src="js/script.js"></script>
+        </form>
+    </main>
+</body>
+</html>

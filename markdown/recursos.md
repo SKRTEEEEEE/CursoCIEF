@@ -4,10 +4,7 @@
 ## Tecnologías y Herramientas Utilizadas
 
 ### [Tecnologías y Lenguajes de Programación](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/techs-lenguajes.md)
-### [Herramientas de desarollo](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/development-tools.md)
-
-
-### [Herramientas de edición](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/edition-tools.md)
+### [Herramientas](https://github.com/SKRTEEEEEE/markdowns/blob/main/utils/tools.md)
 
 
 ## Tips

@@ -1,0 +1,28 @@
+
+
+label{
+    display: block;
+}
+body{
+    max-height: 100vh;
+    max-height: 80vw;
+    display: flex;
+    justify-content: center;
+}
+main{
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+form{
+    display: flex;
+
+}
+.conic {
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+    border-radius: 50%;
+}
