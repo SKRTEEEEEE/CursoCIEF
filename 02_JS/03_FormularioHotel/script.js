@@ -9,5 +9,5 @@ function mostrarAlerta() {
     var kids = document.getElementById("kids").value;
     var opciones = document.querySelector('input[name="opciones"]:checked').value;
 
-    alert("Nombre: " + nombre + "\nApellido: " + apellido + "\nAdultos: " + adultos + "\nNiños " + kids + "Regimen comidas: " +opciones)
+    alert("Nombre: " + nombre + "\nApellido: " + apellido + "\nAdultos: " + adultos + "\nNiños " + kids + "Regimen comidas: " + opciones)
   }

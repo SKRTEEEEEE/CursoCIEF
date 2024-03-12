@@ -1,5 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +9,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js"></script>
-   <main>
-    <h1>Reserva de habitación de hotel</h1>
     <section>
-        <form id="miFormulario">
-     
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-    
-            <label for="apellido">Apellido(s):</label>
-            <input type="text" id="apellido" name="apellido" required><br><br>
-            <label for="adultos">Adultos:</label>
-            <input type="number" id="adultos" name="adultos" required>
-    
-            <label for="kids">Niños:</label>
-            <input type="number" id="kids" name="kids" required><br><br>
-            <label>Régimen de comidas:</label><br>
-            <input type="radio" id="opcion1" name="opciones" value="opcion1">
-            <label for="opcion1">Solo desayuno</label>
-            <input type="radio" id="opcion2" name="opciones" value="opcion2">
-            <label for="opcion2">Media pension</label>
-            <input type="radio" id="opcion3" name="opciones" value="opcion3">
-            <label for="opcion3">Pension completa</label><br><br>
-            <button type="button" onclick="mostrarAlerta()">Mostrar en Alerta</button>
-            <button type="button" onclick="eliminar()">Borrar campos</button>
+       <div>
+        <h2>Reserva de habitacion en hotel</h2>
+        <form id="miFormulario"> 
+            <div class="datos-personales">
+                <h3>Datos personales</h3>
+                <div>
+                    <div>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" required>
+                    </div>
+                    <div>
+                        <label for="apellido">Apellido(s):</label>
+                        <input type="text" name="apellido" id="apellido" required>
+                    </div>
+                </div>
+            </div>
+            <div class="datos-reserva">
+                <h3>Datos de la reserva</h3>
+                <div>
+                    <div class="div-adultos">
+                        <label for="adultos">Adultos:</label>
+                        <input type="number" name="adultos" id="adultos" min="1" required>
+                    </div>
+                    <div class="div-niños">
+                        <label for="kids">Niños:</label>
+                        <input type="number" name="kids" id="kids" min="0" >
+                    </div>
+                </div>
+            </div>
+            <div class="datos-comida">
+                <h3>Régimen de comidas</h3>
+                <br>
+                <div class="div-comidas">
+                <input type="radio" name="opciones" id="opcion1" value="Solo desayuno" required>
+                <label for="radio1">Solo desayuno</label>
+                <br>
+                <input type="radio" name="opciones" id="opcion2" value="Media pensión" required>
+                <label for="radio2">Media pensión</label>
+                <br>
+                <input type="radio" name="opciones" id="opcion3" value="Pensión completa" required>
+                <label for="radio3">Pensión completa</label>
+                </div>
+                <br>
+            </div>
+            <div class="div-botones">
+                <button class="boton-reservar" onclick="mostrarAlerta()">Reservar</button>
+                <button class="boton-borrar" onclick="eliminar()">Borrar campos</button>
+            </div>
         </form>
+    </div>
     </section>
-   </main> 
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,116 @@
+body{
+    font-family: 'Kanit', sans-serif;
+    background: linear-gradient(90deg, aquamarine, cornsilk);
+}
+
+h1 {
+    color: #000;
+    font-size: 2.5em;
+    text-align: center;
+    margin: 1rem 0;
+}
+h2 {
+    color: #000;
+    font-size: 2.0em;
+    text-align: center;
+}
+
+p {
+    color: #000;
+    font-size: 2em;
+    text-align: center;
+}
+
+#presentacio p{
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1220px;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+
+}
+
+.container h2{
+    font-size: 1.8rem;
+    margin: 0;
+    padding: 0;
+
+}
+
+.productes {
+    /* display: flex;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+    gap: 1rem;
+    /* margin-bottom: 3rem; */
+}
+
+.productes div{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1.4rem .8rem;
+    /* height: 200px; */
+    box-shadow: 1px 1px 10px black;
+    background: white;
+}
+
+.productes div:hover{
+    background-color:azure;
+    transform: scale(1.1);
+}
+
+.productes div p{
+    font-size: 1.3rem;
+    margin-top: 0;
+}
+
+.imatges {
+    width: 100%;
+}
+
+#carrito{
+    margin: .5rem 0;
+}
+
+#carrito p{
+    /* width: 400px; */
+    font-size: 1rem;
+    margin: 0 auto;
+    line-height: 2.5rem;
+    text-align: right;
+    /* padding-left: 10rem; */
+}
+
+#total{
+    font-weight: bold;
+    font-size: 1.2rem;
+    /* background-color: black;
+    color: white; */
+    /* padding: 1rem; */
+    
+    /* border-radius: 10px; */
+}
+
+#borrar{
+    display: inline;
+    color: red;
+    margin-right: 1rem;
+    line-height: 2rem;
+    font-size: 1.5rem;
+}
+
+#totalCompra{
+    display: fixed;
+    position: sticky;
+    justify-items: right;
+    bottom: 0;
+    margin-bottom: 2rem;
+    text-align: right;
+}
+
+

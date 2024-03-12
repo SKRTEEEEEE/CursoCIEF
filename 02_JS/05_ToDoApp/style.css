@@ -1,0 +1,91 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+:root{
+    --color-pendiente: rgba(70, 131, 180, 0.512);
+    --color-ejecucion : rgba(245, 125, 81, 0.823);
+    --color-finalizado : rgba(95, 213, 95, 0.762);
+    --color-borrado: rgba(128, 128, 128, 0.766);
+}
+
+}
+
+body {
+  padding: 5vw;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.width-container {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+.form {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+
+.form input {
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+.form input:first-child {
+  border-color: mediumaquamarine;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+}
+
+.form input:last-child {
+  border-color: mediumaquamarine;
+  border-radius: 0 10px 10px 0;
+}
+
+.form input:last-child:hover {
+  background-color: var(--color-pendiente);
+  color: white;
+}
+
+.lista-tareas {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.tarea-pendiente {
+    border: 2px solid var(--color-pendiente);
+    padding: 10px;
+}
+
+.tarea-ejecucion {
+    border: 2px solid var(--color-ejecucion);
+    padding: 10px;
+}
+.tarea-finalizada {
+    border: 2px solid var(--color-finalizada);
+    padding: 10px;
+}
+
+.boton {
+    margin: 0 3px;
+}
+
+.boton-finalizada {
+    color: var(--color-finalizada);
+}
+.boton-borrado {
+    color: var(--color-borrado);
+}
+.boton-ejecucion {
+    color: var(--color-ejecucion)
+}
+.boton-pendiente{
+    color: var(--color-pendiente)
+}
