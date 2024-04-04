@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Light&family=Waiting+for+the+Sunrise&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Waiting for the Sunrise", cursive;
+  
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(163, 236, 163);
+  color: gray;
+  padding: 5px;
+}
+
+.barra a {
+  text-decoration: none;
+  color: gray;
+  padding: 5px;
+  font-size: 28px;
+  font-family: "Love Light", cursive;
+}
+
+.barra a:hover {
+  background-color: darkgreen;
+}
+.container {
+  margin: 1rem auto;
+  max-width: 1200px;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 900;
+  margin: 1rem 0;
+  font-family: "Love Light", cursive;
+}
+
+.foto-ppal img {
+  width: 100%;
+}
+
+.detalles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+
+  p strong {
+    font-weight: bold;
+    font-size: 2rem;
+    color: burlywood;
+    margin-bottom: 2rem;
+    font-family: "Love Light", cursive;
+  }
+
+  p,
+  div {
+    padding: 1rem;
+    font-size: 1.5rem;
+    
+  }
+}
+
+.contacto {
+  background-color: brown;
+
+  p strong {
+    font-weight: bold;
+    font-size: 2rem;
+    color: burlywood;
+    margin: 1.5rem 0;
+    font-family: "Love Light", cursive;
+    text-align: center;
+    display: block;
+  }
+
+  input {
+    font-size: 1.5rem;
+  }
+}
+
+.boton {
+  margin-top: 1rem;
+  padding: 5px 20px;
+  text-align: left;
+  border: 1px solid darksalmon;
+  background-color: darksalmon;
+  display: inline-block;
+  border-radius: 5%;
+
+  &:hover {
+    background-color: salmon;
+    color: bisque;
+  }
+}
+
+.final {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: rgb(163, 236, 163);
+  padding: 2rem 5%;
+  color: beige;
+}
+
+#nosotros {
+  font-size: 1.2rem;
+
+  a {
+    font-size: inherit;
+    text-decoration: none;
+    color:beige;
+  }
+}
+
+#app {
+  font-size: 1.2rem;
+  text-align: center;
+  img {
+    width: 40%;
+  }
+}
+
+#siguenos {
+  font-size: 1.2rem;
+  text-align: center;
+
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  img {
+    width: 30%;
+  }
+}

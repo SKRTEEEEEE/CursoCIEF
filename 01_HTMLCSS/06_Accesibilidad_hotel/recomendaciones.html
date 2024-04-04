@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ponemos el title, imprescindible  -->
+    <title>Recomendaciones</title>
+    <!-- Ponemos el favicon  -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <!-- Nuevo css para sustituir el anterior  -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Utilizamos las etiquetas semànticas:
+    -- nav, header, main, section, footer
+    -- ul, ol, li, etc. -->
+
+    <!-- role = "navigation" añade más semántica, pero no es necesario -->
+    <nav id="inicio" role="navigation">
+      <ul class="container">
+        <li><a href="/01_HTMLCSS/06_Accesibilidad_hotel/index.html">Inicio</a></li>
+        <li><a href="/01_HTMLCSS/06_Accesibilidad_hotel/hotel.html">El Hotel</a></li>
+        <li><a href="/01_HTMLCSS/06_Accesibilidad_hotel/recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="/01_HTMLCSS/06_Accesibilidad_hotel/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <header class="container">
+      <!-- El skip-link es una forma de crear un atajo 
+      para las personas que se dsplazan con el tabulador.
+      Haremos que sea invisible desde la pantalla, excepto 
+      cuando reciba el foco. -->
+      <a tabindex="2" id="skip-link" href="#recomendaciones">Ir al contenido</a>
+
+      <!-- Hay etiquetas que reciben foco de forma predeterminada:
+      -- a, button, input
+      Pero otras no:
+      -- h1, h2, h3, h4, h5, h6, p, span, img
+      Para que reciban foco y puedan ser detectadas 
+      por el lector de pantalla utilizamos el atributo tabindex.
+      tabindex="1" hace que este elemento reciba foco y sea además el primero de todos.
+      tabindex="0" da foco, pero el orden de lectura será la secuencia del código. -->
+      <h1 tabindex="1">Recomendaciones en la montaña</h1>
+
+      <!-- La imagen recibe foco gracias al tabindex.
+      El lector podrá acceder al contenido escrito en alt -->
+      <img
+        src="img/aconit.jpg"
+        alt="Imagen de una planta violeta cercana al Hotel. Disponemos de mucha vegetación para disfrutar en nuestros alrededores."
+        tabindex="0"
+      />
+    </header>
+    <main id="recomendaciones" >
+        <p tabindex="0">Hay una serie de recomendaciones que debemos tener muy en cuenta, porque hay <span id="puedes" class="puedes">cosas que se pueden hacer</span> y <span id="nopuedes" class="nopuedes">cosas que no se deben hacer</span>, ya que perjudican el medio natural e incluso pueden poner en riesgo nuestras vidas y las de los que nos rodean.</p>
+        <ul style="text-align: center;">
+            <li ><a href="#puedes" class="puedes">Respetar la flora y la fauna</a></li>
+            <li><a href="#puedes" class="puedes">Mantener limpio el entorno</a></li>
+            <li ><a href="#nopuedes" class="nopuedes">Hacer hogueras</a></li>
+            <li ><a href="#puedes" class="puedes">Ir con calzado y ropa adecuada</a></li>
+            <li ><a href="#nopuedes" class="nopuedes">Recoger y consumir plantar y hongos de la naturaleza</a></li>
+        </ul>
+    </main>     
+
+    <footer>
+      <div class="container">
+              <section id="nosotros">
+        <h2>SOBRE NOSOTROS</h2>
+        <ul>
+          <li><a href="#">¿Quiénes somos?</a></li>
+          <li><a href="#">Blog Hoteles Rurales</a></li>
+          <li><a href="#">Condiciones legales</a></li>
+          <li><a href="#">Política de cookies</a></li>
+        </ul>
+      </section>
+      <section id="app">
+        <h2>DESCARGA LA APP</h2>
+
+        <ul>
+          <li>
+            <!-- La información que se transmite de forma visual 
+            hay que ponerla por escrito para el lector de pantalla.
+            aria-label nos sirve para informar al usuario de algo,
+            en este caso de lo que hará el enlace. -->
+            <a href="#" aria-label="Enlace a Google Play">
+            <!-- El atributo alt puede estar vacío porque se trata de
+            una imagen que no necesita descripción. En los logos y
+            similares normalmente no hace falta ponerla, aunque sí
+            que tendremos que informar de para que sirven, con aria-label -->
+              <img src="img/google-play2.png" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Enlace a la Apple Store"
+              ><img src="img/apple-store2.png" alt=""
+            /></a>
+          </li>
+        </ul>
+      </section>
+      <section id="siguenos">
+        <h2>SÍGUENOS</h2>
+
+        <ul>
+          <li>
+            <a href="https://facebook.com" aria-label="Enlace a Facebook"
+              ><img
+                src="img/png-transparent-facebook.png"
+                alt=""
+            />Facebook</a>
+          </li>
+          <li>
+            <a href="#" aria-label="Enlace a Twitter"
+              ><img src="img/png-transparent-twitter.png" alt=""
+            />Twitter</a>
+          </li>
+          <li>
+            <a href="#" aria-label="Enlace a Instagram"
+              ><img src="img/png-transparent-instagram.png" alt=""
+            />Instagram</a>
+          </li>
+        </ul>
+      </section>
+      </div>
+
+    </footer>
+  </body>
+</html>

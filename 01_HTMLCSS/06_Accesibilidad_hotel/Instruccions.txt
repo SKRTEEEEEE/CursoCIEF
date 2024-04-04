@@ -1,0 +1,5 @@
+Aquesta vegada ens passen l'encarrec de fer unes pàgines web per a un hotel de montanya. El model de cadascuna, com pots veure a les imatges, té greus problemes d'accessibilitat i usabilitat. Disposem al menys de les imatges i logos necessaris. Per sort, podem presentar una proposta que corregeixi aquest desastre.
+
+Com ho faries per a que les pàgines fossin accessibles?
+
+Pots modificar colors, tamanys, tipografies, estils, disposició dels elements... Inclús si creus que es bona idea afegir alguna cosa més (com ara imatges) també ho pots fer. Totes les idees són ben rebudes!

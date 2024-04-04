@@ -1,10 +1,10 @@
 # Curso CIEF
 
-Certificado de profesionalidad de grado 2
+Certificado de profesionalidad de grado 3
 
-## Descripcion del proyecto
+## Descripción del proyecto
 
-Este repositorio contiene los contenidos teoricos y practicos del curso, asi como todos los recursos necesarios y utilizados durante este.
+Este repositorio contiene los contenidos teóricos y prácticos del curso, así como todos los recursos necesarios y utilizados durante este.
 
 ## [01 HTML y CSS](01_HTMLCSS/README.md)
 
@@ -19,7 +19,7 @@ Este repositorio contiene los contenidos teoricos y practicos del curso, asi com
 
 ### Información de Contacto
 
-#### [Enviame un mensaje](mailto:queen420nft@gmail.com)
+#### [Envíame un mensaje](mailto:queen420nft@gmail.com)
 
 ### Contribuciones y Problemas
 

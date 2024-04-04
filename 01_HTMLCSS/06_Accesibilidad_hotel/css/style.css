@@ -1,0 +1,252 @@
+@font-face {
+  font-family: "Marcellus";
+  src: url("../fonts/Marcellus/Marcellus-Regular.woff2") format("woff2"),
+    url("../fonts/Marcellus/Marcellus-Regular.woff") format("woff"),
+    url("../fonts/Marcellus-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("../fonts/Karla/Karla-Regular.woff2") format("woff2"),
+    url("../fonts/Karla/Karla-Regular.woff") format("woff"),
+    url("../fonts/Karla/Karla-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karla", sans-serif;
+  font-size: 1.2rem;
+}
+
+:root {
+  --primary-color: darkgreen;
+  --secondary-color: white;
+  --text-color: black;
+  --hover-color: olive;
+  --background-form-color: gray;
+}
+
+h1,
+h2 {
+  font-family: "Marcellus", cursive;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav,
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav ul li {
+  padding: 1rem;
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+header {
+  text-align: center;
+}
+
+header img {
+  width: 80%;
+}
+
+main section:first-child {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem auto;
+}
+
+main img {
+  width: 100%;
+}
+
+#habitaciones ul {
+  padding: 1rem;
+}
+
+#restaurante p {
+  margin-bottom: 0.5rem;
+}
+
+.section-form {
+  /* background-color: var(--background-form-color); */
+  background-color: #545454;
+  color: white;
+  padding: 2rem 0;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.section-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  fieldset {
+    padding: 1rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: right;
+  }
+
+  button {
+    padding: 0.5rem 3rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: var(--hover-color);
+    border-color: var(--secondary-color);
+  }
+
+  a {
+    color: var(--secondary-color);
+  }
+}
+
+footer div {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: var(--secondary-color);
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+#nosotros ul {
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+#app img {
+  width: 60%;
+}
+
+#siguenos ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+
+  img {
+    width: 15%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+#recomendaciones ul {
+  a {
+    text-decoration: none;
+    cursor: auto;
+  }
+}
+
+.puedes{
+ color: green;
+}
+.nopuedes {
+  color: red
+}
+
+.volver-inicio {
+  position: fixed;
+  left: 10px; /* Ajusta la posición según sea necesario */
+  top: 10px; /* Ajusta la posición según sea necesario */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  opacity: 0; /* Inicialmente, el elemento es transparente */
+}
+
+.volver-inicio a {
+  display: block;
+}
+
+.volver-inicio:focus {
+  opacity: 1; /* Cuando se enfoca, el elemento se hace visible */
+}
+
+/* El skip-link sirve para crear un elemento invisible
+desde la pantalla a menos que reciba foco */
+#skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}

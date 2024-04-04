@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ponemos el title, imprescindible  -->
+    <title>Hotel Mas dels Avets</title>
+    <!-- Ponemos el favicon  -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <!-- Nuevo css para sustituir el anterior  -->
+    <link rel="stylesheet" href="css/corregido_v1.css" />
+  </head>
+  <body>
+    <!-- Utilizamos las etiquetas semànticas:
+    -- nav, header, main, section, footer
+    -- ul, ol, li, etc. -->
+
+    <!-- role = "navigation" añade más semántica, pero no es necesario -->
+    <nav id="inicio" role="navigation">
+      <ul class="container">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#habitaciones">Habitaciones</a></li>
+        <li><a href="#restaurante">Restaurante</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <header class="container">
+      <!-- El skip-link es una forma de crear un atajo 
+      para las personas que se dsplazan con el tabulador.
+      Haremos que sea invisible desde la pantalla, excepto 
+      cuando reciba el foco. -->
+      <a tabindex="2" id="skip-link" href="#habitaciones">Ir al contenido</a>
+
+      <!-- Hay etiquetas que reciben foco de forma predeterminada:
+      -- a, button, input
+      Pero otras no:
+      -- h1, h2, h3, h4, h5, h6, p, span, img
+      Para que reciban foco y puedan ser detectadas 
+      por el lector de pantalla utilizamos el atributo tabindex.
+      tabindex="1" hace que este elemento reciba foco y sea además el primero de todos.
+      tabindex="0" da foco, pero el orden de lectura será la secuencia del código. -->
+      <h1 tabindex="1">Hotel Mas dels Avets</h1>
+
+      <!-- La imagen recibe foco gracias al tabindex.
+      El lector podrá acceder al contenido escrito en alt -->
+      <img
+        src="img/hotel.jpg"
+        alt="El hotel Mas dels Avets se encuentra enclavado entre montañas y bosques. Disponemos de todos los servicios, incluida piscina."
+        tabindex="0"
+      />
+    </header>
+
+    <main>
+      <section class="container">
+        <img
+          src="img/dormitori.avif"
+          alt="Nuestros dormitorios son extremadamente confortables y están perfectamente equipados."
+          tabindex="0"
+        />
+        <div id="habitaciones">
+          <h2 tabindex="0">Nuestras habitaciones</h2>
+          <p tabindex="0">Todas nuestras habitaciones disponen de:</p>
+          <!-- Las etiquetas ul y li también son semánticas -->
+          <ul tabindex="0">
+            <li>Baño privado.</li>
+            <li>TV conectada a satélite.</li>
+            <li>Aire Acondicionado.</li>
+            <li>Caja de seguridad.</li>
+          </ul>
+          <!-- Ayuda mucho a los usuarios por teclado poder 
+          disponer de atajos para regresar al principio -->
+          <p class="volver-inicio"><a href="#inicio">Volver al inicio</a></p>
+        </div>
+
+        <img
+          src="img/menjador.avif"
+          alt="Sala principal del restaurante, con capacidad para muchos comensales."
+          tabindex="0"
+        />
+        <div id="restaurante" >
+          <h2 tabindex="0">El Restaurante</h2>
+          <p tabindex="0">Ofrecemos menús diarios con productos de temporada.</p>
+          <p tabindex="0">Le recomendamos consulte nuestra excelente carta de vinos.</p>
+          <p tabindex="0">Elaboramos postres artesanos diariamente.</p>
+          <p class="volver-inicio"><a href="#inicio">Volver al inicio</a></p>
+        </div>
+      </section>
+
+      <section class="section-form" id="contacto">
+        <h2 tabindex="0">Contacte con nosotros</h2>
+
+        <form class="container">
+          <fieldset>
+            <legend tabindex="0">Datos Personales</legend>
+            <!-- Para informar al lector de que el input es requerido
+            necesitamos el atributo aria-required="true".
+            No es lo mismo que hacer obligatorio el input 
+            (eso lo hace el atributo required) -->
+            <label>Nombre * : <input type="text" required aria-required="true"/> </label>
+            <label
+              >Apellidos * : <input type="text" required aria-required="true" />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Datos de la reserva</legend>
+            <label>Fecha de entrada : <input type="date" /> </label>
+            <label>Fecha de salida : <input type="date" /> </label>
+          </fieldset>
+
+          <div>
+            <button class="boton" type="submit" >Enviar</button>
+          </div>
+          <p class="volver-inicio"><a href="#inicio">Volver al inicio</a></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+              <section id="nosotros">
+        <h2>SOBRE NOSOTROS</h2>
+        <ul>
+          <li><a href="#">¿Quiénes somos?</a></li>
+          <li><a href="#">Blog Hoteles Rurales</a></li>
+          <li><a href="#">Condiciones legales</a></li>
+          <li><a href="#">Política de cookies</a></li>
+        </ul>
+      </section>
+      <section id="app">
+        <h2>DESCARGA LA APP</h2>
+
+        <ul>
+          <li>
+            <!-- La información que se transmite de forma visual 
+            hay que ponerla por escrito para el lector de pantalla.
+            aria-label nos sirve para informar al usuario de algo,
+            en este caso de lo que hará el enlace. -->
+            <a href="#" aria-label="Enlace a Google Play">
+            <!-- El atributo alt puede estar vacío porque se trata de
+            una imagen que no necesita descripción. En los logos y
+            similares normalmente no hace falta ponerla, aunque sí
+            que tendremos que informar de para que sirven, con aria-label -->
+              <img src="img/google-play2.png" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Enlace a la Apple Store"
+              ><img src="img/apple-store2.png" alt=""
+            /></a>
+          </li>
+        </ul>
+      </section>
+      <section id="siguenos">
+        <h2>SÍGUENOS</h2>
+
+        <ul>
+          <li>
+            <a href="https://facebook.com" aria-label="Enlace a Facebook"
+              ><img
+                src="img/png-transparent-facebook.png"
+                alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Enlace a Twitter"
+              ><img src="img/png-transparent-twitter.png" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Enlace a Instagram"
+              ><img src="img/png-transparent-instagram.png" alt=""
+            /></a>
+          </li>
+        </ul>
+      </section>
+      </div>
+
+    </footer>
+  </body>
+</html>
