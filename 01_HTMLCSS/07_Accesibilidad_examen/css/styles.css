@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+
+:focus {
+    border: 4px solid red;
+    border-radius: 10px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    font-size: 1.1rem;
+    justify-content: center;
+    justify-items: center;
+    font-family: "Roboto", sans-serif;
+}
+
+/* ancho de las secciones */
+main {
+    width: 70%;
+}
+
+header,
+section {
+    margin-bottom: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    margin: 2rem 0;
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+    gap: 10px;
+    padding: 0 2rem;
+}
+
+
+#imgAutor {
+    margin-bottom: 2rem;
+}
+
+#imgEdificios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+}
+
+#imgEdificios img {
+    max-width: 100%;
+}
+
+fieldset {
+    padding: 2rem 3rem;
+}
+
+legend {
+    text-align: left;
+}
+
+#gridFormulario {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 1rem 0;
+}
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+#labels {
+    display: flex;
+    flex-direction: column;
+    min-width: 6rem;
+    text-align: right;
+    margin-right: 1rem;
+
+}
+
+label,
+input[type="text"] {
+    margin-bottom: .5rem;
+}
+
+input[type="text"] {
+    height: 1.5rem;
+    width: 75%;
+    max-width: 400px;
+    padding-left: .6rem;
+}
+
+input[type=submit] {
+    padding: .5rem;
+    background-color: blue;
+    color: white;
+    font-size: 1.3rem;
+}
+
+footer {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#volverArriba {
+    text-align: right;
+    margin: 2rem -3rem -2rem 0;
+    letter-spacing: 2px;
+}
