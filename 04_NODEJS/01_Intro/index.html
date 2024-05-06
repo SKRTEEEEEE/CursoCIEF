@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <p id="reloj"></p>
+        <form>
+        <fieldset>
+            <legend>Alarma</legend>
+            <label for="setAlarma">Tu alarma</label>
+            <input type="time" name="setAlarma" id="setAlarma">
+            <button style="background-color: rgba(254, 48, 48, 0.778);" onclick="guardarAlarma(event)">Guardar alarma</button>
+        </fieldset>
+        
+        </form>
+        <audio src="hardstyle-power-synth-lead_150bpm_F_minor.wav" id="alarma"></audio>
+    </main>
+    <script src="functions.js"></script>
+</body>
+</html>
