@@ -1,0 +1,19 @@
+{
+  "name": "taules-de-multiplicar",
+  "version": "1.0.0",
+  "description": "\"Vamos a mostrar las tablas de multiplicas\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "sample",
+    "basic"
+  ],
+  "author": "Adan Reh",
+  "license": "MIT",
+  "dependencies": {
+    "picocolors": "^1.0.0"
+  }
+}
