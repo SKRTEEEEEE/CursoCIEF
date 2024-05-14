@@ -22,6 +22,13 @@ if(process.argv.length == 2) {
     console.log(menu);
     process.exit(0);
 }
+
+/*
+- Falta verificar que esten los dos argumentos bien introducidos
+- Verificar el orden de los argumentos
+- Verificar que el numero sea mayor de 0
+- Verificar que el idioma este en la lista
+*/
 const operador = process.argv[2];
 const lang = process.argv[3];
 
