@@ -1,0 +1,14 @@
+{
+  "name": "01_intro",
+  "version": "1.0.0",
+  "description": "Mi primer proyecto express",
+  "main": "express_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adan Reh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="css/estils.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Carrito de la compra</h1>
+
+        <div id="presentacio">
+            <h2>Aplicación para comprar fruta</h2>
+            <p>Elige la fruta que deseas haciendo click sobre su imagen.</p>
+
+        </div>
+
+        <div class="fruites">
+            <div>
+                <img onclick="aranja()" class="imatges" src="img/aranja.png" alt="Aranja">
+                <p>Pomelo : 2,50€/kg</p>
+            </div>
+            <div>
+                <img onclick="kiwi()" class="imatges" src="img/kiwi.png" alt="Kiwi">
+                <p>Kiwi : 4,20€/kg</p>
+            </div>
+            <div>
+                <img onclick="llimones()" class="imatges" src="img/llimones.png" alt="Llimones">
+                <p>Limón : 1,20€/kg</p>
+            </div>
+            <div>
+                <img onclick="pinya()" class="imatges" src="img/pinya.png" alt="Pinya">
+                <p>Piña : 2.8€/ud</p>
+            </div>
+            <div>
+                <img onclick="sindria()" class="imatges" src="img/sindria.png" alt="Sindria">
+                <p>Sandía: 1,20€/kg</p>
+            </div>
+        </div>
+
+
+        <div>
+            <h2>Total carrito:</h2>
+            <p id="carrito"></p>
+            <p id="carrito2"></p>
+            <div class="boton">
+                <button onclick="pagar()" id="btnCar">Finalizar</button>
+            </div>
+            
+
+        </div>
+    </div>
+
+    <script src="js/carrito.js"></script>
+</body>
+
+</html>

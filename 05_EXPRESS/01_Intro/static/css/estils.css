@@ -1,0 +1,35 @@
+h1 {
+    color: #000;
+    font-size: 3em;
+    text-align: center;
+}
+h2 {
+    color: #000;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+p {
+    color: #000;
+    font-size: 2em;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.fruites {
+    display: flex;
+    justify-content: space-around;
+}
+
+.imatges {
+    width: 100%;
+}
+
+.boton{
+    text-align: center;
+}
+
