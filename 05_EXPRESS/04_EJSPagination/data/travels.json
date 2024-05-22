@@ -1,0 +1,51 @@
+[
+    {
+        "id": "",
+        "lugar" : "Main",
+        "nombre": "¡Viaja por todo el mundo!",
+        "descripcion": "La mejor agencia de viajes de Internet",
+        "precio": "Los mejores precios que puedas encontrar",
+        "img": "https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": "maldivas",
+        "lugar" : "Maldivas",
+        "nombre": "Maldivas soñadas",
+        "descripcion": "8 días de viaje, con resort en plena playa y vuelos incluidos",
+        "precio": 1500,
+        "img": "https://images.unsplash.com/photo-1540202404-a2f29016b523?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": "egipto",
+        "lugar" : "Egipto",
+        "nombre": "Descubriendo Egipto",
+        "descripcion": "15 días de viaje, con crucero incluido por el Nilo y vuelos incluidos",
+        "precio": 1500,
+        "img": "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        
+        "id": "nuevayork",
+        "lugar": "Nueva York",
+        "nombre": "La gran manzana a tope",
+        "descripcion": "10 días de viaje, con hotel en Manhattan y vuelos incluidos",
+        "precio": 1800,
+        "img": "https://images.unsplash.com/photo-1602940659697-ec0ffdafb09d?q=80&w=1910&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": "venecia",
+        "lugar": "Venecia",
+        "nombre": "La bella Venecia",
+        "descripcion": "5 días de viaje, con hotel en el Gran Canal y vuelos incluidos",
+        "precio": 1500,
+        "img": "https://images.unsplash.com/photo-1558271736-cd043ef2e855?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "id": "vietnam",
+        "lugar": "Vietnam",
+        "nombre": "La magia de Vietnam",
+        "descripcion": "16 días de viaje, con hoteles de lujo y vuelos incluidos",
+        "precio": 1500,
+        "img": "https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+]
