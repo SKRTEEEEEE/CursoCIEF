@@ -1,7 +1,7 @@
 const { createServer } = require("http"); // Importar directamente "http" en lugar de "node:http" (no es necesario para Node.js nativo)
 const data = require("./travels.json");
 
-const puerto = 4000;
+const puerto = 4001;
 
 const server = createServer((req, res) => {
     let nombre = "404";

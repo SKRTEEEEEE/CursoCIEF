@@ -1,0 +1,37 @@
+[
+  {
+    "name": "John",
+    "surname": "Bezzos",
+    "email": "john.bezzos@pear.com",
+    "key": "booksforever",
+    "dateBirth": "2002-10-19"
+  },
+  {
+    "name": "Bill",
+    "surname": "Jobs",
+    "email": "bill.jobs@pear.com",
+    "key": "ilikeapples",
+    "dateBirth": "1999-07-02"
+  },
+  {
+    "name": "Bill",
+    "surname": "Windows",
+    "email": "steve.windows@pear.com",
+    "key": "ilikelinux",
+    "dateBirth": "1990-04-25"
+  },
+  {
+    "name": "Elon",
+    "surname": "Apple",
+    "email": "elon.apple@pear.com",
+    "key": "blablabla",
+    "dateBirth": "2004-01-03"
+  },
+  {
+    "name": "Jeff",
+    "surname": "Musk",
+    "email": "jeff.musk@pear.com",
+    "key": "diamondsareforever",
+    "dateBirth": "2001-08-22"
+  }
+]

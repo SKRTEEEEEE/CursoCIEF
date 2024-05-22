@@ -17,6 +17,11 @@ app.get("/alumnos", (req, res) => {
     res.json(jsonPack)
     // res.send(JSON.stringify(jsonPack))
 })
+app.get("/alumnos/:name", (req, res) => {
+    console.log(req.params.name);
+    const alumno = jsonPack.find(alumno => alumno.name === req.params.name)
+    res.json(alumno)
+})
 app.use(express.static("static"))
 app.use((req, res) => {
     res.status(404).sendFile("./static/404.html",{root: __dirname})
