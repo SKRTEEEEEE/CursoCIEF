@@ -1,0 +1,44 @@
+<%- include('./templates/head.ejs') %>
+
+    <body>
+        <header>
+            <h1>Introduce los datos</h1>
+        </header>
+        <main class="container-sm">
+            <form action="/insert" method="POST">
+                <div class="mb-3">
+                    <label for="nameInput" class="form-label">Nombre Contacto</label>
+                    <div class="input-group">
+                        <input type="string" name="nombre" class="form-control" id="nameInput"
+                            aria-describedby="nameHelp">
+
+
+
+                        <input type="string" name="apellido" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div id="nameHelp" class="form-text">Dime el nombre y apellido de tu contacto.</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <label for="telInput" class="form-label">Numero de Contacto</label>
+                        <input type="tel" name="numero" class="form-control" id="telInput" aria-describedby="numHelp">
+                        <div id="numHelp" class="form-text">Teléfono móvil o fijo del contacto.</div>
+                    </div><div class="col">
+                    <label for="tipoInput" class="form-label">Tipo/Grupo</label>
+                    <input type="string" name="tipo" class="form-control" id="tipoInput" aria-describedby="tipoHelp">
+                    <div id="tipoHelp" class="form-text">Dime el grupo al que pertenece tu contacto.</div>
+                </div>
+                </div>
+                
+                </div>
+                </div>
+                <div class="row px-4 g-3 justify-content-between">
+                <button type="submit" class="col-6 col-sm-2 btn btn-primary">Enviar Datos</button>
+                <button type="reset" class="col-6 col-sm-2 btn btn-danger">Borrar Datos</button></div>
+            </form>
+            <div class="container-sm mt-3  text-start"><a class="btn px-4 btn-secondary" role="button" href="/"
+                    aria-disabled="false">Volver</a></div>
+        </main>
+    </body>
+
+    </html>
