@@ -12,8 +12,19 @@ const configMySQL = {
 const connection = mysql.createConnection(configMySQL);
 
 rutas.get("/", (req, res) => {
-    // res.render('index', {title : "Alquila-me el coche"}); 
-    res.send("Hola mundo"); 
+    res.render('index', {title : "Alquila-me el coche"}); 
+    // res.send("Hola mundo"); 
+})
+
+rutas.get("/:tipo", (req,res)=>{
+    const tipo = req.params.tipo;
+    console.log("tipo: ", tipo)
+    const select = `SELECT * FROM modelos WHERE tipo ="${tipo}"`
+    connection.query(select, (err, result)=>{
+        if(err) throw err;
+        res.render('index', {title : "Alquila-me el coche", data : result})
+        console.log(result)
+    })
 })
 
 module.exports = rutas;
