@@ -1,0 +1,38 @@
+<%- include('./templates/head.ejs') %>
+<body>
+    <header class="container my-4">
+        <h1 class="text-center">Alquila-me el carro</h1>
+    </header>
+    <main class="container-sm">
+        <table id="contactos" class="table table-striped table-dark table-hover">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Alquilado</th>
+                <th>Libre</th>
+                <th>Facturación</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            <% datos.forEach(car => { %><tr>
+                <td><%= car.nombre_modelo %></td>
+      <td><%= car.unidades_totales %></td>
+      <td><%= car.unidades_alquiladas %></td>
+      <td><i><%= car.unidades_libres %></i></td>
+      <td><b><%= car.facturacion %></b></td>
+    </tr>
+            <% }); %>
+
+        
+    </tbody>
+  </table>
+  <div class=" text-center"><a class="btn btn-primary" role="button" href="/form" aria-disabled="false">Añadir vehículo</a></div>
+  
+  <!-- <button class="btn btn-outline-secondary"><a href="/form">Ves al form</a></button> -->
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3/dist/umd/simple-datatables.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

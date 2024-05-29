@@ -1,0 +1,79 @@
+<%- include('./templates/head.ejs') %>
+
+    <body>
+        <header>
+            <h1>Introduce los datos</h1>
+        </header>
+        <main class="container-sm">
+            <form action="/insert" method="POST">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="modeloInput" class="form-label">Modelo</label>
+                        <input type="string" name="nombre_modelo" class="form-control" id="modeloInput" aria-describedby="modeloHelp">
+                        <div id="modeloHelp" class="form-text">Teléfono móvil o fijo del contacto.</div>
+                    </div>
+                    <div class="col">
+                        <label for="tipoInput" class="form-label">Tipo</label>
+                        <input type="string" name="tipo" class="form-control" id="tipoInput"
+                            aria-describedby="tipoHelp">
+                        <div id="tipoHelp" class="form-text">Precio por hora al que se alquila el vehículo.</div>
+                    </div>
+                    <div class="col">
+                        <label for="precioInput" class="form-label">Precio</label>
+                        <input type="number" name="precioDia" class="form-control" id="precioInput"
+                            aria-describedby="precioHelp">
+                        <div id="precioHelp" class="form-text">Precio por hora al que se alquila el vehículo.</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="udInput" class="form-label">Unidades</label>
+                        <input type="number" name="unidades_totales" class="form-control" id="udInput"
+                            aria-describedby="udHelp">
+                        <div id="udHelp" class="form-text">Unidades del vehículo disponibles.</div>
+                    </div>
+                    <div class="col">
+                        <label for="personasInput" class="form-label">Personas</label>
+                        <input type="number" name="personas" class="form-control" id="personasInput" aria-describedby="personasHelp">
+                        <div id="personasHelp" class="form-text">Pasajeros que pueden ocupar el vehículo legalmente.</div>
+                    </div>
+                    <div class="col">
+                        <label for="puertasInput" class="form-label">Puertas</label>
+                        <input type="number" name="puertas" class="form-control" id="puertasInput"
+                            aria-describedby="puertasHelp">
+                        <div id="puertasHelp" class="form-text">Cantidad de puertas que dispone el vehículo.</div>
+                    </div>
+                    <div class="col">
+                        <label for="maletasInput" class="form-label">Maletas</label>
+                        <input type="number" name="maletas" class="form-control" id="maletasInput"
+                            aria-describedby="maletasHelp">
+                        <div id="maletasHelp" class="form-text">Cantidad de maletas que pueden introducirse en el vehículo.</div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col">
+                        <label for="modeloInput" class="form-label">Numero de Contacto</label>
+                        <input type="tel" name="numero" class="form-control" id="modeloInput" aria-describedby="modeloHelp">
+                        <div id="modeloHelp" class="form-text">Teléfono móvil o fijo del contacto.</div>
+                    </div>
+                    <div class="col">
+                        <label for="tipoInput" class="form-label">Tipo/Grupo</label>
+                        <input type="string" name="tipo" class="form-control" id="tipoInput"
+                            aria-describedby="tipoHelp">
+                        <div id="tipoHelp" class="form-text">Dime el grupo al que pertenece tu contacto.</div>
+                    </div>
+                </div> -->
+
+                </div>
+                </div>
+                <div class="row px-4 g-3 justify-content-between">
+                    <button type="submit" class="col-6 col-sm-2 btn btn-primary">Enviar Datos</button>
+                    <button type="reset" class="col-6 col-sm-2 btn btn-danger">Borrar Datos</button>
+                </div>
+            </form>
+            <div class="container-sm mt-3  text-start"><a class="btn px-4 btn-secondary" role="button" href="/"
+                    aria-disabled="false">Volver</a></div>
+        </main>
+    </body>
+
+    </html>
