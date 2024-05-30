@@ -33,7 +33,7 @@ rutas.get("/", async (req, res) => {
         tipos = tipos.map(tipo => {
             return { tipo: capitalizeFirstLetter(tipo.tipo) };
         });
-        res.render('index', { title: "Alquila-me el coche", tipos });
+        res.render('index', { title: "Alquila-me el bugga", tipos });
     } catch (err) {
         console.error("Error fetching tipos:", err);
         res.status(500).send("Error fetching data");
@@ -43,7 +43,7 @@ rutas.get("/", async (req, res) => {
 
 rutas.get("/:tipo", async (req, res) => {
     const tipo = req.params.tipo;
-    console.log("tipo: ", tipo)
+    // console.log("tipo: ", tipo)
     try {
         let tipos = await fetchTipos();
         //Pasar a ES7
@@ -54,11 +54,33 @@ rutas.get("/:tipo", async (req, res) => {
         connection.query(select, (err, result) => {
             if (err) throw err;
             
-            res.render('index', { title: "Alquila-me el coche", data: result, tipos })
+            res.render('tipo', { title: "Alquila-me lo", data: result, tipos, tipo })
             console.log(result)
         })
     } catch (error) {
         console.error(`Error fetching data from ${tipo}: `,error)
+        res.status(500).send("Error fetching data");
+    }
+})
+
+rutas.get("/:tipo/:id", async (req, res) => {
+    const id = req.params.id;
+    // console.log("tipo: ", tipo)
+    try {
+        let tipos = await fetchTipos();
+        //Pasar a ES7
+        tipos = tipos.map(tipo => {
+            return { tipo: capitalizeFirstLetter(tipo.tipo) };
+        });
+        const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
+        connection.query(select, (err, result) => {
+            if (err) throw err;
+
+            res.render('modelo', { title: "Alquila-me el bugga", data: result, tipos })
+            console.log(result)
+        })
+    } catch (error) {
+        console.error(`Error fetching data from vehicle with id ${id}: `, error)
         res.status(500).send("Error fetching data");
     }
 })

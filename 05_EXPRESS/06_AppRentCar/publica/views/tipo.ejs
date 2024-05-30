@@ -1,12 +1,29 @@
 <%- include('./templates/head.ejs') %>
 <body>
-    <header class="container my-4">
-        <h1 class="text-center">Alquila-me el carro</h1>
+    <header>
+        <%- include('./templates/nav.ejs') %>
+        <h1 class="text-center my-4">Alquila-me el carro</h1>
+        
     </header>
     <main class="container-sm">
-
+        <h2><%= tipo %>/s disponible/s</h2>
+        <section class="container  justify-content-center">
+            <div class="row">
+                <% data.forEach(function(veh) { %>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card mb-4" style="width: 100%;">
+                            <img src="img/<%= veh.nombre_modelo %>.webp" class="card-img-top" alt="Fotografía de un/a <%= veh.nombre_modelo %>">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><%= veh.nombre_modelo %></h5>
+                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                <a href="/<%= veh.tipo %>/<%= veh.id_modelo %>" class="btn btn-primary mt-auto">Ver <%= tipo %></a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
     </main>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3/dist/umd/simple-datatables.min.js"></script>
-    <script src="js/script.js"></script> -->
+    
 </body>
 </html>
