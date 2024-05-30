@@ -112,15 +112,12 @@ rutas.get("/:tipo", async (req, res) => {
 
 rutas.get("/:tipo/:id", async (req, res) => {
     const id = req.params.id;
-    // console.log("tipo: ", tipo)
     try {
         let tipos = await fetchTipos();
-        //Pasar a ES7
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
         const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
         connection.query(select, (err, result) => {
             if (err) throw err;
-
             res.render('modelo', { title: "Alquila-me el bugga", data: result, tipos })
             console.log(result)
         })
@@ -131,16 +128,11 @@ rutas.get("/:tipo/:id", async (req, res) => {
 })
 
 rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
-    const id = req.params.id;
-    // console.log("tipo: ", tipo)
-    
+    const id = req.params.id;    
     try {
         
         let tipos = await fetchTipos();
-        //Pasar a ES7
-        tipos = tipos.map(tipo => {
-            return { tipo: capitalizeFirstLetter(tipo.tipo) };
-        });
+        tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
         res.render('reserva', { title: "Alquila-me el bugga", tipos, id })
     //     // const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
     //     // connection.query(select, (err, result) => {
