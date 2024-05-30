@@ -71,14 +71,20 @@ rutas.get("/login",async (req, res)=>{
 //Falta verificar en BDD
 rutas.post("/login", (req, res) => {
     const { email, password, redirectUrl } = req.body;
-
-    // Verificar las credenciales del usuario.
-    if (email === 'email@email' && password === 'password') {
-        req.session.email = email; // Almacenar el email en la sesión
-        console.log("Session:", req.session); // Agregar esta línea
-        return res.redirect(redirectUrl || '/');
-    } else {
-        return res.redirect('/login');
+    try {
+        connection.query("SELECT email, password FROM clientes",(err, result)=>{
+            if(err) throw err;
+            const user = result.find(user=>user.email === email)
+            if(user.password === password){
+                req.session.email = email; // Almacenar el email en la sesión
+                console.log("Session:", req.session); // Agregar esta línea
+                return res.redirect(redirectUrl || '/');
+            } else {
+                return res.redirect('/login');
+            }
+        })
+    } catch (error) {
+        console.error("Error al iniciar session el usuario: ", error)
     }
 });
 
