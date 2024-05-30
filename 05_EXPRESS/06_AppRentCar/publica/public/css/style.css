@@ -1,0 +1,12 @@
+.text-cyberpunk-gradient {
+    background: linear-gradient(to right, #8b00ff, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-soft-black-blur {
+    background-color: rgba(36, 36, 36, 0.84); /* Fondo negro suave con opacidad */
+    backdrop-filter: blur(50px); /* Aplicar desenfoque de 10px */
+    -webkit-backdrop-filter: blur(50px); /* Compatibilidad con Safari */
+  }

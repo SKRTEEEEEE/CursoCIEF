@@ -69,9 +69,7 @@ rutas.get("/:tipo/:id", async (req, res) => {
     try {
         let tipos = await fetchTipos();
         //Pasar a ES7
-        tipos = tipos.map(tipo => {
-            return { tipo: capitalizeFirstLetter(tipo.tipo) };
-        });
+        tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
         const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
         connection.query(select, (err, result) => {
             if (err) throw err;
@@ -81,6 +79,29 @@ rutas.get("/:tipo/:id", async (req, res) => {
         })
     } catch (error) {
         console.error(`Error fetching data from vehicle with id ${id}: `, error)
+        res.status(500).send("Error fetching data");
+    }
+})
+
+rutas.get("/:tipo/:id/reserva", async (req, res) => {
+    // const id = req.params.id;
+    // console.log("tipo: ", tipo)
+    try {
+        
+        // let tipos = await fetchTipos();
+        // //Pasar a ES7
+        // tipos = tipos.map(tipo => {
+        //     return { tipo: capitalizeFirstLetter(tipo.tipo) };
+        // });
+        // const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
+        // connection.query(select, (err, result) => {
+        //     if (err) throw err;
+
+        //     res.render('rent', { title: "Alquila-me el bugga", data: result, tipos })
+        //     console.log(result)
+        // })
+    } catch (error) {
+        console.error(`Error reserva from vehicle with id ${id}: `, error)
         res.status(500).send("Error fetching data");
     }
 })
