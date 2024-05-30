@@ -10,21 +10,57 @@ const configMySQL = {
 }
 
 const connection = mysql.createConnection(configMySQL);
+const fetchTipos = () => {
+    return new Promise((resolve, reject) => {
+        connection.query("SELECT tipo FROM modelos GROUP BY tipo;", (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+};
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
-rutas.get("/", (req, res) => {
-    res.render('index', {title : "Alquila-me el coche"}); 
-    // res.send("Hola mundo"); 
-})
 
-rutas.get("/:tipo", (req,res)=>{
+rutas.get("/", async (req, res) => {
+    try {
+        let tipos = await fetchTipos();
+        //Pasar a ES7
+        tipos = tipos.map(tipo => {
+            return { tipo: capitalizeFirstLetter(tipo.tipo) };
+        });
+        res.render('index', { title: "Alquila-me el coche", tipos });
+    } catch (err) {
+        console.error("Error fetching tipos:", err);
+        res.status(500).send("Error fetching data");
+    }
+});
+
+
+rutas.get("/:tipo", async (req, res) => {
     const tipo = req.params.tipo;
     console.log("tipo: ", tipo)
-    const select = `SELECT * FROM modelos WHERE tipo ="${tipo}"`
-    connection.query(select, (err, result)=>{
-        if(err) throw err;
-        res.render('index', {title : "Alquila-me el coche", data : result})
-        console.log(result)
-    })
+    try {
+        let tipos = await fetchTipos();
+        //Pasar a ES7
+        tipos = tipos.map(tipo => {
+            return { tipo: capitalizeFirstLetter(tipo.tipo) };
+        });
+        const select = `SELECT * FROM modelos WHERE tipo ="${tipo}";`
+        connection.query(select, (err, result) => {
+            if (err) throw err;
+            
+            res.render('index', { title: "Alquila-me el coche", data: result, tipos })
+            console.log(result)
+        })
+    } catch (error) {
+        console.error(`Error fetching data from ${tipo}: `,error)
+        res.status(500).send("Error fetching data");
+    }
 })
 
 module.exports = rutas;
