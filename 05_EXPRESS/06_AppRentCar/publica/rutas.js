@@ -9,7 +9,7 @@ const configMySQL = {
     database: process.env.DATABASE
 }
 const isAuthenticated = (req, res, next) => {
-    if (req.session.user) {
+    if (req.session.email) {
         return next();
     } else {
         res.redirect(`/login?redirect=${req.originalUrl}`);
@@ -43,18 +43,44 @@ rutas.get("/", async (req, res) => {
         res.status(500).send("Error fetching data");
     }
 });
+rutas.get("/logout", (req, res) => {
+    // Destruir la sesión (eliminar todas las variables de sesión)
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Error al cerrar sesión:", err);
+            res.status(500).send("Error al cerrar sesión");
+        } else {
+            // Redirigir al usuario a la página de inicio u otra página
+            res.redirect('/');
+        }
+    });
+});
 rutas.get("/login",async (req, res)=>{
     const redirectUrl = req.query.redirect || '/';
     console.log("redirectUrl: ", redirectUrl)
+    console.log("email session antes del login: ", req.session.email)
     try {
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
-        res.render('login', { title: "Login page", tipos });
+        res.render('login', { title: "Login page", tipos, redirectUrl });
     } catch (err) {
         console.error("Error fetching tipos:", err);
         res.status(500).send("Error fetching data");
     }
 })
+//Falta verificar en BDD
+rutas.post("/login", (req, res) => {
+    const { email, password, redirectUrl } = req.body;
+
+    // Verificar las credenciales del usuario.
+    if (email === 'email@email' && password === 'password') {
+        req.session.email = email; // Almacenar el email en la sesión
+        console.log("Session:", req.session); // Agregar esta línea
+        return res.redirect(redirectUrl || '/');
+    } else {
+        return res.redirect('/login');
+    }
+});
 
 rutas.get("/:tipo", async (req, res) => {
     const tipo = req.params.tipo;
@@ -99,7 +125,7 @@ rutas.get("/:tipo/:id", async (req, res) => {
 })
 
 rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
-    // const id = req.params.id;
+    const id = req.params.id;
     // console.log("tipo: ", tipo)
     
     try {
@@ -109,7 +135,7 @@ rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
         tipos = tipos.map(tipo => {
             return { tipo: capitalizeFirstLetter(tipo.tipo) };
         });
-        res.render('reserva', { title: "Alquila-me el bugga", tipos })
+        res.render('reserva', { title: "Alquila-me el bugga", tipos, id })
     //     // const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
     //     // connection.query(select, (err, result) => {
     //     //     if (err) throw err;

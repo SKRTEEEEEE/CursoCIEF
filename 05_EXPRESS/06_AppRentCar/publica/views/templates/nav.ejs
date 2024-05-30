@@ -12,6 +12,11 @@
                     <a class="nav-link active" aria-current="page" href="/<%= tipo.tipo %>"><%= tipo.tipo %></a>
                   </li>
             <% }) %>
+            <% if (isAuthenticated) { %>
+              <li  class="nav-item"><a class="nav-link active" href="/logout">Cerrar sesión</a></li>
+          <% } else { %>
+              <li  class="nav-item"><a class="nav-link active" href="/login">Iniciar sesión</a></li>
+          <% } %>
 
         </ul>
       </div>

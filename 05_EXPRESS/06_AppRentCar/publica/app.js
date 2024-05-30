@@ -1,12 +1,12 @@
 // Cargar los módulos
 const express = require('express');
-const app = express();
-// Imporatado las rutas
-const rutas = require('./rutas')
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 3001;
 const session = require('express-session');
+//Importar archivos
+const rutas = require('./rutas')
 
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 app.set('view engine', 'ejs');
 // app.set("views", __dirname + "/views") 
@@ -15,9 +15,17 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+// Middleware para verificar la sesión en cada solicitud
+const checkSession = (req, res, next) => {
+    res.locals.isAuthenticated = req.session.email ? true : false;
+    next();
+};
+
+// Aplicar middleware de verificación de sesión a todas las rutas
+app.use(checkSession);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 app.use(express.static('public'));
 app.use(rutas);
