@@ -42,8 +42,8 @@ rutas.get('/', (req, res) => {
 
 
 rutas.post("/insert", (req,res)=>{
-    const {nombre_modelo, unidades_totales, personas, puertas, maletas, tipo, precioDia} = req.body;
-    const insert = `INSERT INTO modelos (nombre_modelo, unidades_totales, personas, puertas, maletas, tipo, precioDia) VALUES ('${nombre_modelo}', '${unidades_totales}', '${personas}', '${puertas}', '${maletas}', '${tipo}', '${precioDia}')`;
+    const {nombre_modelo, unidades_totales, personas, puertas, maletas, tipo, precioDia, cambio} = req.body;
+    const insert = `INSERT INTO modelos (nombre_modelo, unidades_totales, personas, puertas, maletas, tipo, precioDia, cambio) VALUES ('${nombre_modelo}', '${unidades_totales}', '${personas}', '${puertas}', '${maletas}', '${tipo}', '${precioDia}', '${cambio}')`;
     connMySQL.query(insert, (err, result, fields) => {
         if(err) throw err;
         // console.log("result: ", result)
