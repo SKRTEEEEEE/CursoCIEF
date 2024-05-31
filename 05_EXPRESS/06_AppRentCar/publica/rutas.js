@@ -57,8 +57,8 @@ rutas.get("/logout", (req, res) => {
 });
 rutas.get("/login",async (req, res)=>{
     const redirectUrl = req.query.redirect || '/';
-    console.log("redirectUrl: ", redirectUrl)
-    console.log("email session antes del login: ", req.session.email)
+    // console.log("redirectUrl: ", redirectUrl)
+    // console.log("email session antes del login: ", req.session.email)
     try {
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
@@ -95,10 +95,7 @@ rutas.get("/:tipo", async (req, res) => {
     // console.log("tipo: ", tipo)
     try {
         let tipos = await fetchTipos();
-        //Pasar a ES7
-        tipos = tipos.map(tipo => {
-            return { tipo: capitalizeFirstLetter(tipo.tipo) };
-        });
+        tipos = tipos.map(tipo =>  ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
         const select = `SELECT * FROM modelos WHERE tipo ="${tipo}";`
         connection.query(select, (err, result) => {
             if (err) throw err;
