@@ -55,14 +55,14 @@ rutas.get("/logout", (req, res) => {
         }
     });
 });
-rutas.get("/login",async (req, res)=>{
+rutas.get("/login", (req, res)=>{
     const redirectUrl = req.query.redirect || '/';
     // console.log("redirectUrl: ", redirectUrl)
     // console.log("email session antes del login: ", req.session.email)
     try {
-        let tipos = await fetchTipos();
-        tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
-        res.render('login', { title: "Login page", tipos, redirectUrl });
+        // let tipos = await fetchTipos();
+        // tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
+        res.render('login', { title: "Login page", redirectUrl });
     } catch (err) {
         console.error("Error fetching tipos:", err);
         res.status(500).send("Error fetching data");
@@ -89,6 +89,33 @@ rutas.post("/login", (req, res) => {
         console.error("Error al iniciar session el usuario: ", error)
     }
 });
+
+rutas.get("/signin", async(req, res)=>{
+    try {
+        let tipos = await fetchTipos();
+        tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
+        res.render('signin', { title: "Pagina de registro", tipos });
+    } catch (err) {
+        console.error("Error fetching tipos:", err);
+        res.status(500).send("Error fetching data");
+    }
+})
+
+rutas.post("/signin", (req, res)=>{
+    console.log("signin req.body: ", req.body)
+    const {nombre, apellido, dni, tel, email, poblacio, password} = req.body
+    try {
+        connection.query(`INSERT INTO clientes (nombre, apellido, dni, tel, email, poblacio, password) VALUES ('${nombre}', '${apellido}', '${dni}', '${tel}', '${email}', '${poblacio}', '${password}');`,(err, res)=>{
+            if(err)throw err;
+            console.log("usuario subido a la bdd, ahora debería hacer el login auto");
+            
+        })
+        return res.redirect("/login")
+    } catch (error) {
+        console.error("Error al subir un nuevo usuario a la bdd :", error)
+    }
+})
+
 
 rutas.get("/:tipo", async (req, res) => {
     const tipo = req.params.tipo;
