@@ -12,6 +12,7 @@
                 <th>Alquilado</th>
                 <th>Libre</th>
                 <th>Facturación</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -19,9 +20,10 @@
             <% datos.forEach(car => { %><tr>
                 <td><%= car.nombre_modelo %></td>
       <td><%= car.unidades_totales %></td>
-      <td><%= car.unidades_alquiladas %></td>
+      <td><i><%= car.unidades_alquiladas %></i></td>
       <td><i><%= car.unidades_libres %></i></td>
       <td><b><%= car.facturacion %></b></td>
+      <td><a href="update/<%= car.nombre_modelo %>/<%= car.id_modelo %>">Editar ✏️</a></td>
     </tr>
             <% }); %>
 
