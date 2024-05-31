@@ -177,6 +177,16 @@ rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
 
 rutas.post("/reserva",(req, res)=>{
     console.log("reserva: ", req.body)
+    const {id_cliente, facturacion, id_modelo, fecha_recogida, fecha_entrega} = req.body;
+    try {
+        connection.query(`INSERT INTO alquileres (id_cliente, facturacion, id_modelo, fecha_recogida, fecha_entrega) values ('${id_cliente}', '${facturacion}',  '${id_modelo}',  '${fecha_recogida}',  '${fecha_entrega}')`, (err)=>{
+            if(err)throw err;
+        })
+        res.redirect("/")
+    } catch (error) {
+        console.error(`Error al crear una nueva reserva: `, error)
+        res.status(500).send("Error updating a new rent")
+    }
 })
 
 
