@@ -72,12 +72,14 @@ rutas.get("/login",async (req, res)=>{
 rutas.post("/login", (req, res) => {
     const { email, password, redirectUrl } = req.body;
     try {
-        connection.query("SELECT email, password FROM clientes",(err, result)=>{
+        connection.query("SELECT id_cliente, email, password FROM clientes",(err, result)=>{
             if(err) throw err;
+            // console.log("resultado select login: ", result)
             const user = result.find(user=>user.email === email)
             if(user.password === password){
                 req.session.email = email; // Almacenar el email en la sesión
-                console.log("Session:", req.session); // Agregar esta línea
+                req.session.userId = user.id_cliente // Almacenar el id en la sesión
+                // console.log("Session:", req.session);
                 return res.redirect(redirectUrl || '/');
             } else {
                 return res.redirect('/login');
@@ -112,13 +114,14 @@ rutas.get("/:tipo", async (req, res) => {
 
 rutas.get("/:tipo/:id", async (req, res) => {
     const id = req.params.id;
+    const isReserva = false;
     try {
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
         const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
         connection.query(select, (err, result) => {
             if (err) throw err;
-            res.render('modelo', { title: "Alquila-me el bugga", data: result, tipos })
+            res.render('modelo', { title: "Alquila-me el bugga", data: result, tipos , isReserva})
             console.log(result)
         })
     } catch (error) {
@@ -129,22 +132,27 @@ rutas.get("/:tipo/:id", async (req, res) => {
 
 rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
     const id = req.params.id;    
+    const isReserva = true;
     try {
         
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
-        res.render('reserva', { title: "Alquila-me el bugga", tipos, id })
-    //     // const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
-    //     // connection.query(select, (err, result) => {
-    //     //     if (err) throw err;
+        // res.render('reserva', { title: "Alquila-me el bugga", tipos, id })
+        const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
+        connection.query(select, (err, result) => {
+            if (err) throw err;
 
-    //     //     res.render('rent', { title: "Alquila-me el bugga", data: result, tipos })
-    //     //     console.log(result)
-        // })
+            res.render('reserva', { title: "Alquila-me el bugga", data: result, tipos, id_modelo: id, isReserva, id_cliente: req.session.userId })
+            // console.log(result)
+        })
     } catch (error) {
         console.error(`Error reserva from vehicle with id ${id}: `, error)
         res.status(500).send("Error fetching data");
     }
+})
+
+rutas.post("/reserva",(req, res)=>{
+    console.log("reserva: ", req.body)
 })
 
 

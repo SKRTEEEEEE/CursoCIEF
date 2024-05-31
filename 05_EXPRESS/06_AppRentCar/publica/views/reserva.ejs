@@ -30,34 +30,100 @@
     <!-- Cargar el archivo de localización en español para Bootstrap Datepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
     <!-- Cargar el archivo de funcionamiento del datepicker, con mi configuración -->
-    <script src="../../js/datapicker.js"></script>
+    <!-- <script src="../../js/datapicker.js"></script> -->
 </head>
 
 <body>
     <header>
         <%- include('./templates/nav.ejs') %>
-        <h1 class="text-center my-4">Reserva del vehículo con id <%= id %></h1>
+        <h1 class="text-center my-4">Reserva del vehículo con id <%= id_modelo %></h1>
     </header>
-    <main class="container">
-        <form class="col-xl-4 p-4 bg-light">
+    <main class="container row mx-4">
+        <form method="post" action="/reserva" class="col-xl-4 p-4 bg-light">
             
                 <section class="mb-4 d-flex align-items-center">
                     <label for="startDate" class="col-5">Fecha de recogida:</label>
                     <div class="input-group">
-                    <input id="startDate" class="form-control" style="flex: 1;" /><i class="fa fa-car fa-2x input-group-text"></i></div>
+                    <input id="startDate" name="fecha_recogida" class="form-control" style="flex: 1;" /><i class="fa fa-car fa-2x input-group-text"></i></div>
                 </section>
                 
             
                 <section class="mb-4 d-flex align-items-center">
                     <label for="endDate" class="col-5">Fecha de entrega:</label>
                     <div class="input-group">
-                    <input id="endDate" class="form-control" style="flex: 1;" /><i class="fa fa-car fa-2x input-group-text"></i></div>
+                    <input id="endDate" name="fecha_entrega" class="form-control" style="flex: 1;" /><i class="fa fa-car fa-2x input-group-text"></i></div>
                 </section>
+                <section id="totalPriceSection" class="text-center p-4 bg-light">
+                    <h2>Total de la reserva:</h2>
+                    <p id="totalPrice"></p>
+                </section>
+                <section style="display: none;">
+                    <input type="number" id="facturacion" name="facturacion">
+                    <input type="text" name="id_cliente" value="<%= id_cliente %>">
+                    <input type="text" name="id_modelo" value="<%= id_modelo %>">
+                </section>
+                <button type="submit">Confirmar reserva</button>
                 
             
         </form>
+        <article class="col-xl-3 bg-light">
+            <%- include('./templates/caracteristicas-vehiculo-reserva.ejs') %>
+        </article>
+        
         
     </main>
+    <script>
+        $(document).ready(function() {
+            var today = new Date();
+            var precioPorDia = <%= data[0].precioDia %>; // Precio por día obtenido de la variable data
+
+            $('#startDate').datepicker({
+                language: 'es',
+                format: 'dd/mm/yyyy',
+                startDate: today,
+                todayHighlight: true,
+                autoclose: true
+            }).on('changeDate', function (selected) {
+                var startDate = new Date(selected.date.valueOf());
+                startDate.setDate(startDate.getDate() + 1);
+                $('#endDate').datepicker('setStartDate', startDate);
+                calcularPrecioTotal();
+            });
+
+            $('#endDate').datepicker({
+                language: 'es',
+                format: 'dd/mm/yyyy',
+                startDate: today,
+                todayHighlight: true,
+                autoclose: true
+            }).on('changeDate', function (selected) {
+                var endDate = new Date(selected.date.valueOf());
+                $('#startDate').datepicker('setEndDate', endDate);
+                calcularPrecioTotal();
+            });
+
+            function calcularDiferenciaDeDias(fechaInicio, fechaFin) {
+                var unDia = 24 * 60 * 60 * 1000; // horas * minutos * segundos * milisegundos
+                var diferenciaMs = fechaFin - fechaInicio; // Diferencia en milisegundos
+                return Math.round(diferenciaMs / unDia); // Convertir la diferencia de milisegundos a días y redondear
+            }
+
+            function calcularPrecioTotal() {
+                var startDate = $('#startDate').datepicker('getDate');
+                var endDate = $('#endDate').datepicker('getDate');
+                
+                if (startDate && endDate) {
+                    var diferenciaDias = calcularDiferenciaDeDias(startDate, endDate);
+                    var precioTotal = diferenciaDias * precioPorDia;
+                    $('#totalPrice').text(precioTotal + ' €');
+                    $('#facturacion').val(precioTotal);
+                } else {
+                    $('#totalPrice').text('');
+                    $('#facturacion').val('');
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

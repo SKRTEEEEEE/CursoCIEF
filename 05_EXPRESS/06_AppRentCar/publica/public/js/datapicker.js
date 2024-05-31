@@ -13,6 +13,8 @@ $(document).ready(function () {
         autoclose: true
     }).on('changeDate', function (selected) {
         var startDate = new Date(selected.date.valueOf());
+        // Agregar un día a la fecha seleccionada en startDate
+        startDate.setDate(startDate.getDate() + 1);
         $('#endDate').datepicker('setStartDate', startDate);
     });
 
