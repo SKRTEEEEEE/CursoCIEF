@@ -178,10 +178,18 @@ rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
 rutas.post("/reserva",(req, res)=>{
     console.log("reserva: ", req.body)
     const {id_cliente, facturacion, id_modelo, fecha_recogida, fecha_entrega} = req.body;
+  // Parsear las fechas al formato YYYYMMDD
+  const fechaRecogida = fecha_recogida.split("/").reverse().join("");
+  const fechaEntrega = fecha_entrega.split("/").reverse().join("");
     try {
-        connection.query(`INSERT INTO alquileres (id_cliente, facturacion, id_modelo, fecha_recogida, fecha_entrega) values ('${id_cliente}', '${facturacion}',  '${id_modelo}',  '${fecha_recogida}',  '${fecha_entrega}')`, (err)=>{
-            if(err)throw err;
-        })
+        connection.query(
+            `INSERT INTO alquileres (id_cliente, facturacion, id_modelo, fecha_recogida, fecha_entrega) 
+             VALUES (?, ?, ?, DATE_FORMAT(?, '%Y-%m-%d'), DATE_FORMAT(?, '%Y-%m-%d'))`,
+            [id_cliente, facturacion, id_modelo, fechaRecogida, fechaEntrega],
+            (err) => {
+              if (err) throw err;
+            }
+          );
         res.redirect("/")
     } catch (error) {
         console.error(`Error al crear una nueva reserva: `, error)
