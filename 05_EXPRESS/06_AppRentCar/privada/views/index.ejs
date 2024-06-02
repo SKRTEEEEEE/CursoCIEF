@@ -9,9 +9,9 @@
               <tr>
                 <th>Nombre</th>
                 <th>Stock</th>
-                <th>Alquilado</th>
-                <th>Libre</th>
-                <th>Facturación</th>
+                <th aria-describedby="udsalquiladoHelp">Alquilado</th>
+                <th aria-describedby="udslibreHelp">Libre</th>
+                <th aria-describedby="facturacionHelp">Facturación</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -20,9 +20,9 @@
             <% datos.forEach(car => { %><tr>
                 <td><%= car.nombre_modelo %></td>
       <td><%= car.unidades_totales %></td>
-      <td><i><%= car.unidades_alquiladas %></i></td>
-      <td><i><%= car.unidades_libres %></i></td>
-      <td><b><%= car.facturacion %></b></td>
+      <td aria-describedby="udsalquiladoHelp"><i><%= car.unidades_alquiladas %></i></td>
+      <td aria-describedby="udslibreHelp"><i><%= car.unidades_libres %></i></td>
+      <td aria-describedby="facturacionHelp"><b><%= car.facturacion %> €</b></td>
       <td><a href="update/<%= car.nombre_modelo %>/<%= car.id_modelo %>">Editar ✏️</a></td>
     </tr>
             <% }); %>
@@ -30,6 +30,17 @@
         
     </tbody>
   </table>
+  <article>
+    <p class="mb-0">
+      Facturación: <span id="facturacionHelp" class="text-muted">Se refiere a la cantidad de facturación desde el inicio de la aplicación.</span>
+    </p>
+    <p class="mb-0">
+      Libre: <span id="udslibreHelp" class="text-muted">Se refiere a la cantidad de vehículos disponibles a dia de hoy.<br/><i>Entienda-se que "Stock"-"Libre"="Uso" -> Vehículos usados hoy.</i></span>
+    </p>
+    <p class="mb-0">
+      Alquilado: <span id="udsalquiladoHelp" class="text-muted">Se refiere a la cantidad de vehículos alquilados a partir del dia de hoy. <br/><i>Entienda-se que podrá aver mas cantidad reservada de la de uds. disponibles ya que se contabilizan todas las reservas del futuro.</i></span>
+    </p>
+  </article>
   <div class=" text-center"><a class="btn btn-primary" role="button" href="/form" aria-disabled="false">Añadir vehículo</a></div>
   
   <!-- <button class="btn btn-outline-secondary"><a href="/form">Ves al form</a></button> -->

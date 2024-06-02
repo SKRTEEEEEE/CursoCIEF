@@ -19,26 +19,108 @@ const configMySQL = {
 }
 
 const connMySQL = mysql.createConnection(configMySQL);
-//Cargar configurador de rutas
-rutas.get('/', (req, res) => {
-    // console.log('estoy funcionando');console.log("configMySQL: ", configMySQL)
-    const select = "SELECT id_modelo, nombre_modelo, unidades_totales FROM modelos";
-    connMySQL.query(select, (err, result) => {
-        if(err) throw err;
-        
-        console.log("result: ", result)
-        const datosFin = result.map(row => {
-            return {
-                id_modelo: row.id_modelo,
-                nombre_modelo: row.nombre_modelo,
-                unidades_totales: row.unidades_totales,
-                unidades_alquiladas: 0,
-                unidades_libres: 0,
-                facturacion: 0,
-            };
+// const fetchFacturacionModelo = (id) => {
+//     const fetch = `
+//         SELECT 
+//             al.fecha_recogida, 
+//             al.fecha_entrega, 
+//             al.facturacion, 
+//             mo.nombre_modelo, 
+//             mo.precioDia, 
+//             mo.unidades_totales 
+//         FROM 
+//             modelos mo 
+//         INNER JOIN 
+//             alquileres al 
+//         ON 
+//             al.id_modelo = mo.id_modelo 
+//         WHERE 
+//             mo.id_modelo = ?
+//     `;
+
+//     return new Promise((resolve, reject) => {
+//         connMySQL.query(fetch, [id], (err, result) => {
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                 resolve(result);
+//             }
+//         });
+//     });
+// };
+const fetchFacturacionModelo = (id) => {
+    const fetch = `
+        SELECT 
+            SUM(facturacion) AS facturacion 
+        FROM 
+            alquileres 
+        WHERE 
+            id_modelo = ?
+    `;
+
+    return new Promise((resolve, reject) => {
+        connMySQL.query(fetch, [id], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result[0].facturacion || 0);
+            }
         });
-        res.render('index', {title : "Alquila-me el coche", datos: datosFin});
     });
+};
+const fetchUnidadesAlquiladas = (id) => {
+    const today = new Date().toISOString().split('T')[0]; // Obtener la fecha de hoy en formato YYYY-MM-DD
+    const fetch = `
+        SELECT 
+            COUNT(*) AS unidades_alquiladas 
+        FROM 
+            alquileres 
+        WHERE 
+            id_modelo = ? AND fecha_entrega >= ?
+    `;
+
+    return new Promise((resolve, reject) => {
+        connMySQL.query(fetch, [id, today], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result[0].unidades_alquiladas || 0);
+            }
+        });
+    });
+};
+//Cargar configurador de rutas
+rutas.get('/', async (req, res) => {
+    const select = "SELECT id_modelo, nombre_modelo, unidades_totales FROM modelos";
+    try {
+        connMySQL.query(select, async (err, result) => {
+            if (err) throw err;
+
+            console.log("result: ", result);
+
+            const datosFinPromises = result.map(async row => {
+                const facturacion = await fetchFacturacionModelo(row.id_modelo);
+                const unidadesAlquiladas = await fetchUnidadesAlquiladas(row.id_modelo);
+                const unidadesLibres = row.unidades_totales - unidadesAlquiladas;
+
+                return {
+                    id_modelo: row.id_modelo,
+                    nombre_modelo: row.nombre_modelo,
+                    unidades_totales: row.unidades_totales,
+                    unidades_alquiladas: unidadesAlquiladas,
+                    unidades_libres: unidadesLibres,
+                    facturacion: facturacion,
+                };
+            });
+
+            const datosFin = await Promise.all(datosFinPromises);
+            console.log("datosFin: ", datosFin);
+            res.render('index', { title: "Alquila-me el coche", datos: datosFin });
+        });
+    } catch (error) {
+        console.error("Error al cargar los datos de los modelos: ", error);
+        res.status(500).send("Error al cargar los datos de los modelos");
+    }
 });
 
 rutas.get('/form', (req, res) => {
