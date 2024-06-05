@@ -58,6 +58,7 @@ const fetchFacturacionModelo = (id) => {
             id_modelo = ?
     `;
 
+
     return new Promise((resolve, reject) => {
         connMySQL.query(fetch, [id], (err, result) => {
             if (err) {
@@ -70,17 +71,18 @@ const fetchFacturacionModelo = (id) => {
 };
 const fetchUnidadesAlquiladas = (id) => {
     const today = new Date().toISOString().split('T')[0]; // Obtener la fecha de hoy en formato YYYY-MM-DD
+    console.log("today: ", today)
     const fetch = `
         SELECT 
             COUNT(*) AS unidades_alquiladas 
         FROM 
             alquileres 
         WHERE 
-            id_modelo = ? AND fecha_entrega >= ?
+            id_modelo = ? AND fecha_recogida <= ? AND fecha_entrega >= ?
     `;
 
     return new Promise((resolve, reject) => {
-        connMySQL.query(fetch, [id, today], (err, result) => {
+        connMySQL.query(fetch, [id, today, today], (err, result) => {
             if (err) {
                 reject(err);
             } else {
@@ -89,6 +91,8 @@ const fetchUnidadesAlquiladas = (id) => {
         });
     });
 };
+
+
 //Cargar configurador de rutas
 rutas.get('/', async (req, res) => {
     const select = "SELECT id_modelo, nombre_modelo, unidades_totales FROM modelos";
@@ -101,6 +105,7 @@ rutas.get('/', async (req, res) => {
             const datosFinPromises = result.map(async row => {
                 const facturacion = await fetchFacturacionModelo(row.id_modelo);
                 const unidadesAlquiladas = await fetchUnidadesAlquiladas(row.id_modelo);
+                
                 const unidadesLibres = row.unidades_totales - unidadesAlquiladas;
 
                 return {

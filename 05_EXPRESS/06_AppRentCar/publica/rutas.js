@@ -28,9 +28,112 @@ const fetchTipos = () => {
         });
     });
 };
+const getAlquileresPorModelo = (idModelo) => {
+    const query = `SELECT * FROM alquileres WHERE id_modelo = ${idModelo}`;
+    
+    return new Promise((resolve, reject) => {
+        connection.query(query, (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                // Ajustar la fecha a la zona horaria correcta
+                const formattedResults = results.map(row => {
+                    const fechaRecogida = new Date(row.fecha_recogida);
+                    const fechaEntrega = new Date(row.fecha_entrega);
+
+                    // Convertir a la misma zona horaria
+                    const adjustedFechaRecogida = new Date(fechaRecogida.getTime() - fechaRecogida.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+                    const adjustedFechaEntrega = new Date(fechaEntrega.getTime() - fechaEntrega.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+
+                    return {
+                        ...row,
+                        fecha_recogida: adjustedFechaRecogida,
+                        fecha_entrega: adjustedFechaEntrega
+                    };
+                });
+
+                console.log("result getAlquileres: ", formattedResults);
+                resolve(formattedResults);
+            }
+        });
+    });
+};
+const fetchUnidadesAlquiladas = (id) => {
+    const today = new Date().toISOString().split('T')[0]; // Obtener la fecha de hoy en formato YYYY-MM-DD
+    console.log("today: ", today)
+    const fetch = `
+        SELECT 
+            COUNT(*) AS unidades_alquiladas 
+        FROM 
+            alquileres 
+        WHERE 
+            id_modelo = ? AND fecha_recogida <= ? AND fecha_entrega >= ?
+    `;
+
+    return new Promise((resolve, reject) => {
+        connection.query(fetch, [id, today, today], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result[0].unidades_alquiladas || 0);
+            }
+        });
+    });
+};
+
+
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
+const determinarDisponibilidad = (unidadesLibres) => {
+    if (unidadesLibres === 0) {
+        return "🔴 No disponible";
+    } else if (unidadesLibres === 1) {
+        return "🟡 Ultima unidad";
+    } else if (unidadesLibres === 2 || unidadesLibres === 3) {
+        return "🟠 Pocas unidades";
+    } else {
+        return "🟢 Disponible";
+    }
+};
+const generarIntervalosDisponibilidad = (alquileres, unidadesTotales) => {
+    const intervalos = [];
+    let fechaActual = new Date();
+    fechaActual.setUTCHours(0, 0, 0, 0);
+
+    // Ordenar los alquileres por fecha de recogida
+    alquileres.sort((a, b) => new Date(a.fecha_recogida) - new Date(b.fecha_recogida));
+
+    alquileres.forEach(alquiler => {
+        const fechaRecogida = new Date(alquiler.fecha_recogida);
+        const fechaEntrega = new Date(alquiler.fecha_entrega);
+
+        // Si la fecha de recogida es posterior a la fecha actual y hay un intervalo entre la última entrega y la recogida
+        if (fechaRecogida > fechaActual) {
+            intervalos.push({
+                inicio: fechaActual,
+                fin: fechaRecogida,
+                disponibles: unidadesTotales - 1
+            });
+        }
+
+        // Actualizar la fecha actual a la fecha de entrega si es posterior a la fecha actual
+        if (fechaEntrega > fechaActual) {
+            fechaActual = fechaEntrega;
+        }
+    });
+
+    // Agregar un intervalo final
+    intervalos.push({
+        inicio: fechaActual,
+        fin: null,
+        disponibles: unidadesTotales - 1
+    });
+
+    return intervalos;
+};
+
+
 
 
 rutas.get("/", async (req, res) => {
@@ -57,18 +160,14 @@ rutas.get("/logout", (req, res) => {
 });
 rutas.get("/login", (req, res)=>{
     const redirectUrl = req.query.redirect || '/';
-    // console.log("redirectUrl: ", redirectUrl)
-    // console.log("email session antes del login: ", req.session.email)
     try {
-        // let tipos = await fetchTipos();
-        // tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
         res.render('login', { title: "Login page", redirectUrl });
     } catch (err) {
         console.error("Error fetching tipos:", err);
         res.status(500).send("Error fetching data");
     }
 })
-//Falta verificar en BDD
+
 rutas.post("/login", (req, res) => {
     const { email, password, redirectUrl } = req.body;
     try {
@@ -123,8 +222,8 @@ rutas.get("/:tipo", async (req, res) => {
     try {
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo =>  ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
-        const select = `SELECT * FROM modelos WHERE tipo ="${tipo}";`
-        connection.query(select, (err, result) => {
+        const select = `SELECT * FROM modelos WHERE tipo = ?;`
+        connection.query(select, [tipo], (err, result) => {
             if (err) throw err;
             
             res.render('tipo', { title: "Alquila-me lo", data: result, tipos, tipo })
@@ -136,44 +235,95 @@ rutas.get("/:tipo", async (req, res) => {
     }
 })
 
+
+//Falta hacer el collapse, de las uds disponibles, a partir de aquí !!
+//Como extra: Mirar si funciona el componente card /->(isReserva)
+
 rutas.get("/:tipo/:id", async (req, res) => {
     const id = req.params.id;
     const isReserva = false;
     try {
         let tipos = await fetchTipos();
+        const unidadesAlquiladasHoy = await fetchUnidadesAlquiladas(id)
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
-        const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
-        connection.query(select, (err, result) => {
+
+        const selectModelo = `SELECT * FROM modelos WHERE id_modelo = ?;`;
+
+        connection.query(selectModelo, [id], async (err, resultModelo) => {
             if (err) throw err;
-            res.render('modelo', { title: "Alquila-me el bugga", data: result, tipos , isReserva})
-            console.log(result)
-        })
+
+            // const alquileres = await getAlquileresPorModelo(id);
+            const unidadesTotales = resultModelo[0].unidades_totales;
+            // const unidadesAlquiladasHoy = alquileres.filter(alquiler => new Date(alquiler.fecha_recogida) <= new Date() && new Date(alquiler.fecha_entrega) >= new Date()).length;
+            const unidadesLibres = unidadesTotales - unidadesAlquiladasHoy;
+            const disponibilidad = determinarDisponibilidad(unidadesLibres);
+
+            res.render('modelo', {
+                title: "Alquila-me el bugga",
+                data: resultModelo,
+                tipos,
+                isReserva,
+                unidades_libres: unidadesLibres,
+                disponibilidad: disponibilidad
+            });
+            console.log("ResultModelo: ", resultModelo);
+            console.log("udsLibre: ", unidadesLibres);
+            console.log("dispo :", disponibilidad);
+        });
     } catch (error) {
-        console.error(`Error fetching data from vehicle with id ${id}: `, error)
+        console.error(`Error fetching data from vehicle with id ${id}: `, error);
         res.status(500).send("Error fetching data");
     }
-})
+});
 
 rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
-    const id = req.params.id;    
+    const id = req.params.id;
     const isReserva = true;
+
     try {
-        
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
-        // res.render('reserva', { title: "Alquila-me el bugga", tipos, id })
-        const select = `SELECT * FROM modelos WHERE id_modelo = ${id};`
-        connection.query(select, (err, result) => {
-            if (err) throw err;
 
-            res.render('reserva', { title: "Alquila-me el bugga", data: result, tipos, id_modelo: id, isReserva, id_cliente: req.session.userId })
-            // console.log(result)
-        })
+        const unidadesAlquiladasHoy = fetchUnidadesAlquiladas(id)
+
+        const selectModelo = `SELECT * FROM modelos WHERE id_modelo = ?;`;
+        const alquileres = await getAlquileresPorModelo(id);
+        // console.log("alquileres: ",alquileres)
+
+        connection.query(selectModelo, [id], (err, resultModelo) => {
+            if (err) throw err;
+            // console.log("result modelo: ",resultModelo)
+
+            const unidadesTotales = resultModelo[0].unidades_totales;
+            
+            // const unidadesDisponibles = unidadesTotales - unidadesAlquiladasHoy;
+            // console.log("uds disponibles: ", unidadesDisponibles)
+
+            let intervalos = [];
+            if (unidadesAlquiladasHoy <= 1) {
+                intervalos = generarIntervalosDisponibilidad(alquileres, unidadesTotales);
+            }
+
+            res.render('reserva', {
+                title: "Alquila-me el bugga",
+                data: resultModelo,
+                tipos,
+                id_modelo: id,
+                isReserva,
+                id_cliente: req.session.userId,
+                intervalos
+            });
+            console.log("intervalos: ", intervalos);
+            // console.log("uds disponible: ", unidadesDisponibles)
+        });
     } catch (error) {
-        console.error(`Error reserva from vehicle with id ${id}: `, error)
+        console.error(`Error reserva from vehicle with id ${id}: `, error);
         res.status(500).send("Error fetching data");
     }
-})
+});
+
+
+
 
 rutas.post("/reserva",(req, res)=>{
     console.log("reserva: ", req.body)

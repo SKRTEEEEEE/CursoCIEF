@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Rabbit Inc</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include("templates/nav.ejs") %>
+<main>
+    <h2>Nuestro equipo</h2>
+    <section>
+        <% result.forEach(empleado => { %>
+            <a href="team/<%= empleado.apellido %>">
+            <div class="card <%= empleado.departamento %>">
+            <img src="/img_customers/<%= empleado.foto %>" alt="imagen de <%= empleado.nombre %>">
+            <h3><%= empleado.nombre %> <%= empleado.apellido %></h3>
+            <p><%= empleado.email %></p>
+            <hr>
+            <p><%= empleado.departamento %></p>
+            </div></a>
+        <% }) %>
+    </section>
+
+  
+</main>
+</body>
+</html>

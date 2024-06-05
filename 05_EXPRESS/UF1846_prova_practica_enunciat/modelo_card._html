@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Rabbit Inc</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+      <div>
+        <img src="/logo/bunny.webp" alt="" />
+        <h1>White Rabbit Inc</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/departamento/CEO">CEO</a></li>
+          <li><a href="/departamento/Clientes">Clientes</a></li>
+          <li><a href="/departamento/Ventas">Ventas</a></li>
+          <li><a href="/departamento/Desarrollo">Desarrollo</a></li>
+        </ul>
+      </nav>
+    </header>
+<main>
+    <h2>Nuestro equipo</h2>
+    <section>
+            <div class="card Ventas">
+            <img src="img_customers/barbara.kingsolver.png" alt="">
+            <h3>Barbara Kingsolver</h3>
+            <p>barbara.kingsolver@pear.com</p>
+            <hr>
+            <p>Ventas</p>
+        </div>
+    </section>
+
+  
+</main>
+</body>
+</html>

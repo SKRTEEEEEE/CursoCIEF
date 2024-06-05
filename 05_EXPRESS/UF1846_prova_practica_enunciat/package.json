@@ -1,0 +1,21 @@
+{
+  "name": "examen-uf1845",
+  "version": "1.0.0",
+  "description": "Examen de Backend con Express 1845UF_ap_ADAN_REH_MAÑACH",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SKRTEEEEEE/CursoCIEF"
+  },
+  "directories": {
+    "project": "05_EXPRESS/UF1846_prova_practica_enunciat"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}

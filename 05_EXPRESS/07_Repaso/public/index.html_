@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our cars</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Cars Pepito</h1>
+    </header>
+    <main>
+        <h2>Our cars</h2>
+        <section>
+            <div class="card">
+                <img src="img/Fiat 500 Cabrio.webp" alt="Fiat 500 Cabrio">
+                <h3>Fiat 500 Cabrio</h3>
+                <p>Personas: 4</p>
+                <p>Puertas: 4</p>
+                <p>Cambio: manual</p>
+                <p>Maletas: 3</p>
+                <p>Precio/dia: 45.00€</p>
+                <hr>
+                <p>coche</p>
+                
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright &copy; 2024</p>
+    </footer>
+  </body>
+</html>

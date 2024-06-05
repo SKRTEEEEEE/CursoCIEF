@@ -1,0 +1,31 @@
+{
+  "name": "alquiler",
+  "version": "1.0.0",
+  "description": "Nuestros vehículos en alquiler",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/classesdeferran/cars.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "EJS",
+    "Body-parser"
+  ],
+  "author": "Ferran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/classesdeferran/cars/issues"
+  },
+  "homepage": "https://github.com/classesdeferran/cars#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}

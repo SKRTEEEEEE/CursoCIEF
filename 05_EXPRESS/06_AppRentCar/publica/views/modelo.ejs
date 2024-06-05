@@ -23,6 +23,7 @@
               <%- include('./templates/caracteristicas-vehiculo.ejs') %>
             <div class=" bg-soft-black-blur ">
             <p class="fs-md-8 fs-5 text-center rounded-1 fw-semibold text-cyberpunk-gradient">PRECIO FINAL GARANTIZADO</p></div>
+            <p>Disponibilidad hoy: <span><%= disponibilidad %></span></p>
             <a href="/<%= data[0].tipo %>/<%= data[0].id_modelo %>/reserva" class="btn btn-primary btn-lg shadow-lg px-4 py-2">
                 Reservar
               </a>

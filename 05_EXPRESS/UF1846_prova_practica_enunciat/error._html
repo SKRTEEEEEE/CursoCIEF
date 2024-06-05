@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Rabbit Inc</title>
+    <link rel="shortcut icon" href="logo/bunny.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body >
+    <header>
+<img src="/logo/bunny.webp" alt="">
+<h1>White Rabbit Inc</h1>
+    </header>
+<main class="main-error">
+    <h2 class="h2-error">Página no encontrada</h2>
+    <p>Te sugerimos revises la dirección o lo intentes de nuevo dentro de unos instantes</p>
+   <img src="/img/oops-og.webp" alt="Oops">
+</main>
+</body>
+</html>

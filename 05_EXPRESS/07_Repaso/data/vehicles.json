@@ -1,0 +1,94 @@
+[
+    {
+        "nombre": "Fiat Panda",
+        "personas": 4,
+        "puertas": 5,
+        "cambio": "manual",
+        "maletas": 2,
+        "tipo": "coche",
+        "precioDia": 49.00
+        
+    },
+    {
+        "nombre": "Nissan Micra",
+        "personas": 5,
+        "puertas": 5,
+        "cambio": "manual",
+        "maletas": 2,
+        "tipo": "coche",
+        "precioDia": 53.00
+    },
+    {
+        "nombre": "Nissan X-trail Auto",
+        "personas": 5,
+        "puertas": 5,
+        "cambio": "manual",
+        "maletas": 2,
+        "tipo": "coche",
+        "precioDia": 187.00
+    },
+    {
+        "nombre": "Fiat 500 Cabrio",
+        "personas": 4,
+        "puertas": 3,
+        "cambio": "manual",
+        "maletas": 2,
+        "tipo": "coche",
+        "precioDia": 77.00
+    },
+    {
+        "nombre": "Jeep Wrangler",
+        "personas": 4,
+        "puertas": 3,
+        "cambio": "manual",
+        "maletas": 2,
+        "tipo": "coche",
+        "precioDia": 104.00
+    },
+    {
+        "nombre": "Opel ZafiraSG",
+        "personas": 7,
+        "puertas": 5,
+        "cambio": "manual",
+        "maletas": 4,
+        "tipo": "coche",
+        "precioDia": 106.00
+    },
+    {
+        "nombre": "Piaggio Vespa 125 LX",
+        "personas": 2,
+        "puertas": 0,
+        "cambio": "auto",
+        "maletas": 0,
+        "tipo": "moto",
+        "precioDia": 29.00
+    },
+    {
+        "nombre": "Opel Corsa",
+        "personas": 5,
+        "puertas": 5,
+        "cambio": "manual",
+        "maletas": 3,
+        "tipo": "coche",
+        "precioDia": 57.00
+    },
+    {
+        "nombre": "Piaggio Beverly 300cc",
+        "personas": 2,
+        "puertas": 0,
+        "cambio": "auto",
+        "maletas": 0,
+        "tipo": "moto",
+        "precioDia": 45.00
+    },
+    {
+        "nombre": "Nissan Primastar",
+        "personas": 9,
+        "puertas": 5,
+        "cambio": "manual",
+        "maletas": 5,
+        "tipo": "furgoneta",
+        "precioDia": 147.00
+    }
+]
+

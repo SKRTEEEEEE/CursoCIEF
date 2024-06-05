@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our cars</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("template/nav.ejs") %>
+    <main>
+      <h2><%= h2 %></h2>
+      <section>
+        <% result.forEach(vehiculo => { %>
+        <div class="card <%= vehiculo.tipo %>">
+          <img src="/img/<%= vehiculo.nombre_modelo %>.webp" alt="<%= vehiculo.nombre_modelo %>" />
+          <h3><%= vehiculo.nombre_modelo %></h3>
+          <p><%= vehiculo.personas %> personas</p>
+          <p><%= vehiculo.puertas %> puertas</p>
+          <p>Cambio: <%= vehiculo.cambio %> </p>
+          <p><%= vehiculo.maletas %> maletas</p>
+          <p>Precio/dia: <%= vehiculo.precioDia %>€ </p>
+          <hr />
+          <p><%= vehiculo.tipo %></p>
+        </div>
+        <% }) %>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright &copy; 2024</p>
+    </footer>
+  </body>
+</html>
