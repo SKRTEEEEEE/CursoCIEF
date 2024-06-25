@@ -62,7 +62,12 @@
                     <input type="text" name="id_cliente" value="<%= id_cliente %>">
                     <input type="text" name="id_modelo" value="<%= id_modelo %>">
                 </section>
-                <button class="btn btn-primary" type="submit">Confirmar reserva</button>
+                <% if (unidadesDisponibles === 0) { %>
+                    <p>Esperar unos días</p>
+                <% } else { %>
+                    <button class="btn btn-primary" type="submit">Confirmar reserva</button>
+                <% } %>
+                
                 
             
         </form>

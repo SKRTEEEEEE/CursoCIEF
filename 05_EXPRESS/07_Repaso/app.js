@@ -1,7 +1,7 @@
 // Cargar los módulos
 const express = require('express')
 // const bodyParser = require('body-parser')
-const {router, tipos} = require('./router.js')
+const router = require('./router.js')
 
 // Crear la aplicación
 const app = express()
@@ -24,11 +24,7 @@ app.use(express.static('public'))
 // Utilizar las rutas del fichero router.js
 app.use(router)
 
-console.log("tipos: ",tipos)
-// Definir qué hacer en caso de error
-app.use((req, res) => {
-    res.status(404).render('error', {tipos})
-})
+
 
 
 

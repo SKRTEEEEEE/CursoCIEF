@@ -276,6 +276,7 @@ rutas.get("/:tipo/:id", async (req, res) => {
     }
 });
 
+//Falta manejar los intervalos y mostrarlos en la zona de reserva, cuando quede 1 o 0 uds dispo
 rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
     const id = req.params.id;
     const isReserva = true;
@@ -284,7 +285,7 @@ rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
         let tipos = await fetchTipos();
         tipos = tipos.map(tipo => ({ tipo: capitalizeFirstLetter(tipo.tipo) }));
 
-        const unidadesAlquiladasHoy = fetchUnidadesAlquiladas(id)
+        const unidadesAlquiladasHoy = await fetchUnidadesAlquiladas(id)
 
         const selectModelo = `SELECT * FROM modelos WHERE id_modelo = ?;`;
         const alquileres = await getAlquileresPorModelo(id);
@@ -292,12 +293,10 @@ rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
 
         connection.query(selectModelo, [id], (err, resultModelo) => {
             if (err) throw err;
-            // console.log("result modelo: ",resultModelo)
 
             const unidadesTotales = resultModelo[0].unidades_totales;
-            
-            // const unidadesDisponibles = unidadesTotales - unidadesAlquiladasHoy;
-            // console.log("uds disponibles: ", unidadesDisponibles)
+            const unidadesDisponibles = unidadesTotales - unidadesAlquiladasHoy;
+
 
             let intervalos = [];
             if (unidadesAlquiladasHoy <= 1) {
@@ -311,10 +310,10 @@ rutas.get("/:tipo/:id/reserva", isAuthenticated, async (req, res) => {
                 id_modelo: id,
                 isReserva,
                 id_cliente: req.session.userId,
-                intervalos
+                intervalos,
+                unidadesDisponibles
             });
             console.log("intervalos: ", intervalos);
-            // console.log("uds disponible: ", unidadesDisponibles)
         });
     } catch (error) {
         console.error(`Error reserva from vehicle with id ${id}: `, error);

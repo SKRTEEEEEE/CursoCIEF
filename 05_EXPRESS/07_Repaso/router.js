@@ -26,12 +26,14 @@ const connection = mysql.createConnection(configMySQL);
 //         });
 //     });
 // }
+// console.log("connection: ", connection)
 let tipos = [];
 connection.query("SELECT DISTINCT(tipo) FROM modelos GROUP BY tipo", (err, result) => {
-    if (err) {
-        console.log(err);
-    } else {
+    try {
         tipos = result;
+    } catch (error) {
+        console.error(error)
+        tipos = false;
     }
 });
 
@@ -40,6 +42,7 @@ router.get('/', (req, res) => {
     const selectAll = "SELECT * FROM modelos"
     connection.query(selectAll, (err, result) => {
         if (err) {
+            res.render("error-server")
             console.log(err)
         } else {
             // console.log(result);
@@ -54,6 +57,7 @@ router.get("/type/:tipo",async(req,res)=>{
     
     connection.query(selectAll,[tipo], (err, result) => {
         if (err) {
+            res.render("error-server")
             console.log(err)
         } else {
             if(result.length === 0){
@@ -63,7 +67,18 @@ router.get("/type/:tipo",async(req,res)=>{
         }
     })
 })
+console.log("tipos: ",tipos)
+// Definir qué hacer en caso de error
+// router.get("/:error", (req, res) => {
+//     res.render('error', {h2 : "Esta pagina no existe",tipos})
+// })
+router.get("*", (req, res) => {
+    console.log("tipos: ", tipos)
+    if(tipos===undefined){
+        res.render("error-server")
+    }else {
+    res.status(404).render('error', {h2 : "Esta pagina no existe",tipos})}
+})
 
 
-
-module.exports = {router, tipos}
+module.exports = router
