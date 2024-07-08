@@ -1,0 +1,19 @@
+# Utilizamos un script en vez de utilizar la consola, para que este ejecute los comandos al levantar la aplicacion
+
+# Le indicamos que imagen queremos utilizar 
+FROM node
+
+# Definir el directorio de la aplicacion de la imagen
+# _mejor usar este en vez de RUN ya que este, ?dejara el puntero en la direccion marcada?
+WORKDIR /app
+
+# Copiar todo al directorio /app
+COPY . .
+
+# Obtener las dependencias (módulos)
+# Para ejecutar comandos usaremos RUN, en esta linea descargaremos los modulos indicados en package.json
+RUN npm install
+# Arrancar la aplicación
+CMD ["node", "--watch", "src/app.js"]
+
+#* Los contenedores se crean de imagenes y los Labels de los contenedores

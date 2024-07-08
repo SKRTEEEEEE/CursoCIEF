@@ -22,11 +22,14 @@ CMD ["npm", "start"]
 
 # ---
     # Para construir el contenedor hemos de tirar el comando:
-    # docker build -t node-game .
+        # docker build -t node-game .
+        # El . final le dice la ruta en la que se encuentra "la cosa a crear una imagen"
     # Para ver las imagenes en la maquina
-    # docker images
+        # docker images
     # Para levantar el contenador
-    # -d lo levanta y lo ejecuta como servicio como si fuera MySQL o cualquier otro
-    # <puente-entre-puertos> El que usamos en la maquina:El que se usa en la imagen(ESTE HA DE SER EL MISMO)
-    # <nombre-del-proyecto>
-    # docker run -d -p 4000:2500 node-game
+        # -d lo levanta y lo ejecuta como servicio como si fuera MySQL o cualquier otro
+        # <puente-entre-puertos> El que usamos en la maquina:El que se usa en la imagen(ESTE HA DE SER EL MISMO)
+        # <nombre-del-proyecto>
+        # docker run -d -p 4000:2500 node-game
+
+        # docker run -it "interactive". Te permite seguir usando la consola, para programas en los que necesitemos utilizar la consola
